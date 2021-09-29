@@ -39,12 +39,12 @@
     **************************************/
  
 	//TODO: avoid duplicates !
- 
+/*
     foreach ($users as $u) {        
         $file_db->exec("INSERT INTO users (username, password) 
                 VALUES ('{$u['username']}', '{$u['password']}')");
     }
-  
+ */
     /**************************************
     * Close db connections                *
     **************************************/

@@ -5,17 +5,21 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
  
-        $query=$file_db->query("SELECT COUNT(*) as count FROM `users` WHERE `username`='$username' AND `password`='$password'");
-        $row=$query->fetchArray();
-        $count=$row['count'];
+		//PROBLEM avec query
  
-        if($count > 0){
+       /*$result = $file_db->query("SELECT COUNT(*) as count FROM `users` WHERE `username`='$username' AND `password`='$password'");
+        $row=$result->fetchArray();
+        $count=$row['count'];*/
+			
+		
+       if($count > 0){
             //echo "<div class='alert alert-success'>Login successful</div>";
-			echo "Login successful";
+			echo "<div>Login successful</div>";
         }else{
             //echo "<div class='alert alert-danger'>Invalid username or password</div>";
-			echo "Invalid username or password";
+			echo "<div>Invalid username or password</div>";
         }
     }
 	
+	echo "<div>Invalid username or password</div>";
 ?>
