@@ -43,7 +43,9 @@
     // Array with some test users to insert to database             
     $users = array(
                   array('username' => 'admin',
-                        'password' => 'admin')                        
+                        'password' => 'admin',
+                        'validity' => 0 ,
+                        'role' => 0)                        
                 ); 
 				
 	/**************************************
@@ -53,8 +55,8 @@
 	//TODO: avoid duplicates !
 
     foreach ($users as $u) {        
-        $file_db->exec("INSERT OR IGNORE INTO users (username, password) 
-                VALUES ('{$u['username']}', '{$u['password']}')");
+        $file_db->exec("INSERT OR IGNORE INTO users (username, password, validity, role) 
+                VALUES ('{$u['username']}', '{$u['password']}', '{$u['validity']}', '{$u['role']}')");
     }
  
     /**************************************
