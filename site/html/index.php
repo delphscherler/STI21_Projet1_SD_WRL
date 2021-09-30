@@ -11,7 +11,7 @@
 		<h4 class="text-primary">Please login to see your messsages</h4>
         <hr style="border-top:1px dotted #ccc;"/>
         <div class="col-md-6">
-            <form action="" method="POST">
+            <form method="POST"> <!-- action="inbox.php" -->
                 <div class="form-group">
                     <label>Username</label>
                     <input type="text" name="username" class="form-control" required="required"/>
@@ -25,10 +25,6 @@
             <br/>
             <?php include 'login.php'?>	<!-- Problème dans fichier login! -->		
         </div>
-        <!-- <div class="col-md-3">
-            <h6>Default username: admin</h6>
-            <h6>Default password: admin</h6>
-        </div> -->
     </div>
 </body>		
 </html>

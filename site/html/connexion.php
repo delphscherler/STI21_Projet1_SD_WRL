@@ -23,6 +23,8 @@
                     id INTEGER PRIMARY KEY, 
                     username TEXT, 
                     password TEXT)"); 
+					
+	
  
     /**************************************
     * Set initial data                    *
