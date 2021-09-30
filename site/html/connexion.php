@@ -22,8 +22,18 @@
     $file_db->exec("CREATE TABLE IF NOT EXISTS users (
                     id INTEGER PRIMARY KEY, 
                     username TEXT, 
-                    password TEXT)"); 
+                    password TEXT,
+					validity INTEGER,
+					role INTEGER,
+					UNIQUE(username))"); 
 					
+	$file_db->exec("CREATE TABLE IF NOT EXISTS messages (
+                    id INTEGER PRIMARY KEY, 
+                    sender TEXT, 
+                    receiver TEXT,
+					subject TEXT,
+					date TEXT,
+					message TEXT)"); 
 	
  
     /**************************************
@@ -41,12 +51,12 @@
     **************************************/
  
 	//TODO: avoid duplicates !
-/*
+
     foreach ($users as $u) {        
-        $file_db->exec("INSERT INTO users (username, password) 
+        $file_db->exec("INSERT OR IGNORE INTO users (username, password) 
                 VALUES ('{$u['username']}', '{$u['password']}')");
     }
- */
+ 
     /**************************************
     * Close db connections                *
     **************************************/

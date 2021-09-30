@@ -6,7 +6,34 @@
     </head>
 <body>
     <h1>Inbox</h1>
-	
-	
+	<table class="table table-hover">
+		<thead>
+			<tr class="table-primary">
+				<th>Sender</th>
+				<th>Date</th>
+				<th>Subject</th>
+				<th colspan="3">Actions</th>				
+			</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<?php 			
+				
+				
+				
+				echo "<td>The table body</td>";
+				echo "<td>with two columns</td>";
+				echo "<td></td>";
+				echo "<td><button name=\"read\" class=\"btn btn-primary\">Read</button></td>";
+				echo "<td><button name=\"answer\" class=\"btn btn-info\">Answer</button></td>";	
+				echo "<td><button name=\"delete\" class=\"btn btn-danger\">Delete</button></td>";	
+					
+			?>
+			<!-- <td><button name="read">Read</button></td> -->
+			
+		</tr>		
+			
+		</tbody>
+</table>	
 </body>		
 </html>
