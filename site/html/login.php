@@ -30,7 +30,8 @@
 			exit();
 		}
 		else{
-			echo "Login successful";
+			//echo "Login successful";
+			$_SESSION["username"] = $uname;
 			header('Location: inbox.php');
 			exit();
 		}

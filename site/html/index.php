@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,7 +16,7 @@
 		<h2 class="text-primary">Please login to see your messsages</h2>
         <hr style="border-top:1px dotted #ccc;"/>
         <div class="col-md-6">
-            <form method="POST"> <!-- action="inbox.php" -->
+            <form method="POST">
                 <div class="form-group">
                     <label>Username</label>
                     <input type="text" name="username" class="form-control" required="required"/>
