@@ -1,5 +1,10 @@
 <?php
 	session_start();
+	// Logout and close session
+	if(isset($_POST['logout'])) { //NOT OK
+		session_unset();
+		session_destroy();
+	}
 ?>
 
 <!DOCTYPE html>
@@ -12,8 +17,8 @@
     <h1 class="text-primary">Inbox</h1>
 	<hr style="border-top:1px dotted #ccc;"/>
 	<button name="new" class="btn btn-outline-primary" onClick="location.href='new_message.html'">New message</button>
-	<button name="new" class="btn btn-outline-info" onClick="location.href='new_message.html'">Administration</button>
-	<button name="new" class="btn btn-outline-danger" onClick="location.href='new_message.html'">Log out</button>
+	<button name="admin" class="btn btn-outline-info" onClick="location.href='administration.php'">Administration</button>
+	<button name="logout" class="btn btn-outline-danger" onClick="location.href='index.php'">Log out</button>
 	<hr style="border-top:1px dotted #ccc;"/>
 	<table class="table table-hover">
 		<thead>
@@ -55,7 +60,7 @@
 					echo "<td>$subject</td>";
 					echo "<td><button name=\"read\" class=\"btn btn-primary\" onClick=\"location.href='show_message.html'\">Read</button></td>";
 					echo "<td><button name=\"answer\" class=\"btn btn-info\" onClick=\"location.href='new_message.html'\">Answer</button></td>";	
-					echo "<td><button name=\"delete\" class=\"btn btn-danger\">Delete</button></td>";					
+					echo "<td><button name=\"delete\" class=\"btn btn-danger\">Delete</button></td>";				
 				}
 
 				// Close file db connection
