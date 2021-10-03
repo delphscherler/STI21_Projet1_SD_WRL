@@ -5,7 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="bootstrap.css"/>
     </head>
 <body>
-    <h1>Inbox</h1>
+    <h1 class="text-primary">Inbox</h1>
 	<table class="table table-hover">
 		<thead>
 			<tr class="table-primary">
@@ -28,11 +28,8 @@
 				echo "<td><button name=\"answer\" class=\"btn btn-info\">Answer</button></td>";	
 				echo "<td><button name=\"delete\" class=\"btn btn-danger\">Delete</button></td>";	
 					
-			?>
-			<!-- <td><button name="read">Read</button></td> -->
-			
-		</tr>		
-			
+			?>			
+		</tr>			
 		</tbody>
 </table>	
 </body>		
