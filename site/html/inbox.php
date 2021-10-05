@@ -1,9 +1,16 @@
 <?php
 	session_start();
+	
+	//Control if user is logged in
+	if(!isset($_SESSION['username'])){
+	   header("Location:index.php");
+	}
+	
 	// Logout and close session
-	if(isset($_POST['logout'])) { //NOT OK
+	if(ISSET($_POST['logout'])){
 		session_unset();
 		session_destroy();
+		header('Location: index.php');
 	}
 ?>
 
@@ -16,9 +23,11 @@
 <body>
     <h1 class="text-primary">Inbox</h1>
 	<hr style="border-top:1px dotted #ccc;"/>
-	<button name="new" class="btn btn-outline-primary" onClick="location.href='new_message.html'">New message</button>
-	<button name="admin" class="btn btn-outline-info" onClick="location.href='administration.php'">Administration</button>
-	<button name="logout" class="btn btn-outline-danger" onClick="location.href='index.php'">Log out</button>
+	<form method="POST">
+		<button name="new" class="btn btn-outline-primary">New message</button>
+		<button name="admin" class="btn btn-outline-info">Administration</button>
+		<button name="logout" class="btn btn-outline-danger">Log out</button>
+	</form>
 	<hr style="border-top:1px dotted #ccc;"/>
 	<table class="table table-hover">
 		<thead>

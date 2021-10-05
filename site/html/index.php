@@ -14,9 +14,9 @@
     <?php include 'connexion.php'?>
         <h1 class="text-primary">Welcome</h1>
 		<h2 class="text-primary">Please login to see your messsages</h2>
-		<?php
+		<!-- <?php
 			print_r($_SESSION);
-		?>
+		?> -->
         <hr style="border-top:1px dotted #ccc;"/>
         <div class="col-md-6">
             <form method="POST">
