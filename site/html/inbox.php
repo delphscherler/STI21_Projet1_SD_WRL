@@ -12,6 +12,16 @@
 		session_destroy();
 		header('Location: index.php');
 	}
+	
+	//New message
+	if(ISSET($_POST['new'])) {
+		header("Location: new_message.php");
+	}
+	
+	//Administration
+	if(ISSET($_POST['admin'])) {
+		header("Location: administration.php");
+	}
 ?>
 
 <!DOCTYPE html>
@@ -67,10 +77,23 @@
 					echo "<td>$sender</td>";
 					echo "<td>$date</td>";
 					echo "<td>$subject</td>";
-					echo "<td><button name=\"read\" class=\"btn btn-primary\" onClick=\"location.href='show_message.html'\">Read</button></td>";
-					echo "<td><button name=\"answer\" class=\"btn btn-info\" onClick=\"location.href='new_message.html'\">Answer</button></td>";	
-					echo "<td><button name=\"delete\" class=\"btn btn-danger\">Delete</button></td>";				
+					echo "<form method=\"POST\">";
+					echo "<td><button name=\"read\" class=\"btn btn-primary\">Read</button></td>";
+					echo "<td><button name=\"answer\" class=\"btn btn-info\">Answer</button></td>";	
+					echo "<td><button name=\"delete\" class=\"btn btn-danger\">Delete</button></td>";	
+					echo "</form>";
 				}
+
+				if(ISSET($_POST['read'])) {
+					header("Location: show_message.php");				
+				}
+				if(ISSET($_POST['answer'])) {
+					header("Location: new_message.php");				
+				}
+				if(ISSET($_POST['delete'])) {
+					//TODO sql request to delete the message
+				}
+				
 
 				// Close file db connection
 				$db = null;					

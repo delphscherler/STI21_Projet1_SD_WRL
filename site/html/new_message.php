@@ -17,6 +17,8 @@
     <div class="col-md-6 well">        
 		<h1 class="text-primary">New Message</h1>
         <hr style="border-top:1px dotted #ccc;"/>
+		<button class="btn btn-dark" onclick="history.go(-1);">Back</button>
+		<hr style="border-top:1px dotted #ccc;"/>
         <div class="col-md-6">
             <form action="submit_message.php" method="POST">
                 <div class="form-group"> <!-- Destinataire! -->
@@ -32,7 +34,7 @@
                     <textarea name="message_body" rows="5" cols="40"  class="form-control"></textarea>
                 </div> 
                 <div class="form-group">
-                    <input type="submit" />
+                    <button name="send" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Send</button>
                 </div> 
             </form>
         </div>

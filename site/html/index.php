@@ -28,7 +28,7 @@
                     <label>Password</label>
                     <input type="password" name="password" class="form-control" required="required"/>
                 </div> 
-                <button name="login" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+                <button name="login" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Login</button>
              </form>
             <br/>
 			 <?php include 'login.php'?>
