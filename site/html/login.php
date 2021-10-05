@@ -1,5 +1,5 @@
 <?php
-	if(ISSET($_POST['login'])){
+	if(ISSET($_POST['login'])){		
 		// Create (connect to) SQLite database in file
 		$db = new PDO('sqlite:/usr/share/nginx/databases/database.sqlite');
 		// Set errormode to exceptions

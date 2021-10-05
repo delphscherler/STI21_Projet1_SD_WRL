@@ -40,19 +40,19 @@
     * Set initial data                    *
     **************************************/
  
-    // Array with some test users to insert to database             
+    // Array with some test users to insert to database
+	//validity = 1 -> valid / validity = 0 -> not valid
+	//role = 1 -> admin / role = 0 -> user
     $users = array(
                   array('username' => 'admin',
                         'password' => 'admin',
-                        'validity' => 0 ,
-                        'role' => 0)                        
+                        'validity' => 1 ,
+                        'role' => 1)                        
                 ); 
 				
 	/**************************************
     * Play with databases and tables      *
-    **************************************/
- 
-	//TODO: avoid duplicates !
+    **************************************/ 
 
     foreach ($users as $u) {        
         $file_db->exec("INSERT OR IGNORE INTO users (username, password, validity, role) 

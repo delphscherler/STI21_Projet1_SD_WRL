@@ -1,40 +1,44 @@
 <?php  
 
+	if(ISSET($_POST['send'])){
 
+		$receiver=$_POST["receiver"];         //receiving receiver field value in $name variable
+		$subject=$_POST["subject"];             //receiving subject field value in $password variable  
+		$message_body= $_POST["message_body"];  //receiving message_body field value in $password variable 
+		$sender = $_SESSION['username'];
+		$date = "05.10.2021";
 
-	$recipient=$_POST["recipient"];         //receiving recipient field value in $name variable  
+		//Message confirmation
+		/*echo "Message confirmation:";
+		echo "Receiver: $receiver "; 
+		echo "Subject: $subject";
+		echo "Message: $message_body";
+		echo "Thank you for submitting";*/
+		echo "Message is send !";		
 
-	$subject=$_POST["subject"];             //receiving subject field value in $password variable  
+		//Saving the message in the database
+		// Create (connect to) SQLite database in file
+		$db = new PDO('sqlite:/usr/share/nginx/databases/database.sqlite');
+		// Set errormode to exceptions
+		$db->setAttribute(PDO::ATTR_ERRMODE, 
+								PDO::ERRMODE_EXCEPTION); 
 
-	$message_body= $_POST["message_body"];  //receiving message_body field value in $password variable 
+		if(!$db){
+			echo $db->lastErrorMsg();
+			} else {
+		   //echo "Opened database successfully\n";
+		 }
 
+		$send = "INSERT INTO messages (sender, receiver, subject, date, message) 
+				VALUES ('$sender', '$receiver', '$subject', '$date', '$message_body')";				
+		
+		//echo $send;
+				
+		$db->exec("INSERT INTO messages (sender, receiver, subject, date, message) 
+				VALUES ('$sender', '$receiver', '$subject', '$date', '$message_body')");
 
-
-	//Message confirmation
-
-	echo "Message confirmation :"
-
-	echo "Recipient: $recipient";  
-
-	echo "Subject: $subject";
-
-	echo "Message: $message_body";
-
-	echo "Thank you for submitting"
-
-
-
-	//Saving the message in the database
-
-
-
-	$formatted_time = date('Y-m-d H:i:s', $m['time']);
-
-	$file_db->exec("INSERT INTO messages (title, message, time) 
-
-			VALUES ('{$m['title']}', '{$m['message']}', '{$formatted_time}')");
-
-
-
+		// Close file db connection
+		$db = null;
+	}
 
 ?>  

@@ -20,10 +20,10 @@
 		<button class="btn btn-dark" onclick="history.go(-1);">Back</button>
 		<hr style="border-top:1px dotted #ccc;"/>
         <div class="col-md-6">
-            <form action="submit_message.php" method="POST">
+            <form method="POST">
                 <div class="form-group"> <!-- Destinataire! -->
                     <label>Receiver</label>
-                    <input type="text" name="recipient" class="form-control" required="required"/>
+                    <input type="text" name="receiver" class="form-control" required="required"/>
                 </div>
                 <div class="form-group"> <!-- Sujet! -->
                     <label>Subject</label>
@@ -37,6 +37,7 @@
                     <button name="send" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Send</button>
                 </div> 
             </form>
+			<?php include 'submit_message.php'?>
         </div>
     </body>		
 </html>
