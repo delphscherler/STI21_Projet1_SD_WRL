@@ -65,8 +65,9 @@
 					} else {
 				   // echo "Opened database successfully\n";
 				 }
-				$uname=$_SESSION["username"];
-				
+				 
+				//Select message for the current user
+				$uname=$_SESSION["username"];				
 				$sql = "SELECT * FROM messages WHERE receiver='".$uname."'";
 								   
 			    foreach  ($db->query($sql) as $row) {					
@@ -74,26 +75,22 @@
 					$date = $row['date'];
 					$subject = $row['subject'];
 					
+					echo "<form method=\"POST\" action=\"msg_actions.php\">";
+					echo "<tr>";
 					echo "<td>$sender</td>";
+					echo "<input type=\"hidden\" name=\"sender\" value=\"$sender\"/>"; 
 					echo "<td>$date</td>";
-					echo "<td>$subject</td>";
-					echo "<form method=\"POST\">";
+					echo "<input type=\"hidden\" name=\"date\" value=\"$date\"/>";
+					echo "<td>$subject</td>";	
+					echo "<input type=\"hidden\" name=\"subject\" value=\"$subject\"/>";
+					
+					//Actions buttons
 					echo "<td><button name=\"read\" class=\"btn btn-primary\">Read</button></td>";
 					echo "<td><button name=\"answer\" class=\"btn btn-info\">Answer</button></td>";	
 					echo "<td><button name=\"delete\" class=\"btn btn-danger\">Delete</button></td>";	
-					echo "</form>";
-				}
-
-				if(ISSET($_POST['read'])) {
-					header("Location: show_message.php");				
-				}
-				if(ISSET($_POST['answer'])) {
-					header("Location: new_message.php");				
-				}
-				if(ISSET($_POST['delete'])) {
-					//TODO sql request to delete the message
-				}
-				
+					echo "</tr>";
+					echo "</form>";									
+				}					
 
 				// Close file db connection
 				$db = null;					
