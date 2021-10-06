@@ -5,6 +5,7 @@
 	if(!isset($_SESSION['username'])){
 	   header("Location:index.php");
 	}
+	
 ?>
 
 <!DOCTYPE html>
@@ -23,11 +24,28 @@
             <form method="POST">
                 <div class="form-group"> <!-- Destinataire! -->
                     <label>Receiver</label>
-                    <input type="text" name="receiver" class="form-control" required="required"/>
+					<!-- Retrieve receiver -->
+					<?php
+						if($_GET){ //if response to a msg
+							$sender = $_GET['sender'];						
+							echo "<input type=\"text\" name=\"receiver\" class=\"form-control\" required=\"required\" value=\"$sender\">";
+						}
+						else{
+							echo "<input type=\"text\" name=\"receiver\" class=\"form-control\" required=\"required\">";
+						}
+					?>
                 </div>
                 <div class="form-group"> <!-- Sujet! -->
                     <label>Subject</label>
-                    <input type="text" name="subject" class="form-control" required="required"/>
+					<?php
+						if($_GET){ //if response to a msg
+							$subject = $_GET['subject'];				
+							echo "<input type=\"text\" name=\"subject\" class=\"form-control\" required=\"required\" value=\"RE : $subject\">";
+						}
+						else{
+							echo "<input type=\"text\" name=\"subject\" class=\"form-control\" required=\"required\">";
+						}
+					?>                    
                 </div>
                 <div class="form-group"> <!-- Corps du message! -->
                     <label>Message</label> 

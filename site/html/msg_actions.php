@@ -16,7 +16,9 @@
 		header("Location: show_message.php");				
 	}
 	if(ISSET($_POST['answer'])) {
-		header("Location: new_message.php");				
+		$sender = $_POST['sender'];
+		$subject = $_POST['subject'];
+		header("Location:new_message.php?sender=$sender&subject=$subject");					
 	}			
 	
 	if(ISSET($_POST['delete'])) {	
