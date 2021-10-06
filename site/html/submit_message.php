@@ -6,7 +6,8 @@
 		$subject=$_POST["subject"];             //receiving subject field value in $password variable  
 		$message_body= $_POST["message_body"];  //receiving message_body field value in $password variable 
 		$sender = $_SESSION['username'];
-		$date = date('d.m.Y h:i');
+		date_default_timezone_set('Europe/Zurich');
+		$date = date('d.m.Y H:i');
 
 		//Message confirmation
 		/*echo "Message confirmation:";
