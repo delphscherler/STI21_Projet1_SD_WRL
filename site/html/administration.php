@@ -24,9 +24,9 @@
             <form method="POST">
                 <div class="form-group">
                     <label>Nouveau mot de passe</label>
-                    <input type="text" name="username" class="form-control" required="required"/>
+                    <input type="text" name="new_password" class="form-control" required="required"/>
                 </div>
-                <button name="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>submit</button>
+                <button name="update" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>update</button>
             </form>
             <?php include 'change_password.php'?>
         </div>
