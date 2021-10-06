@@ -32,6 +32,10 @@
     </head>
 <body>
     <h1 class="text-primary">Inbox</h1>
+	<?php
+		$user = $_SESSION['username'];		
+		echo "<h2 class=\"text-primary\">Hello $user!</h2>";
+	?>
 	<hr style="border-top:1px dotted #ccc;"/>
 	<form method="POST">
 		<button name="new" class="btn btn-outline-primary">New message</button>
@@ -45,7 +49,7 @@
 				<th>Sender</th>
 				<th>Date</th>
 				<th>Subject</th>
-				<th colspan="3">Actions</th>				
+				<th>Actions</th>				
 			</tr>
 		</thead>
 		<tbody>
@@ -68,7 +72,7 @@
 				 
 				//Select message for the current user
 				$uname=$_SESSION["username"];				
-				$sql = "SELECT * FROM messages WHERE receiver='".$uname."'";
+				$sql = "SELECT * FROM messages WHERE receiver='".$uname."' ORDER BY date DESC";
 								   
 			    foreach  ($db->query($sql) as $row) {					
 					$sender = $row['sender'];
@@ -84,10 +88,10 @@
 					echo "<td>$subject</td>";	
 					echo "<input type=\"hidden\" name=\"subject\" value=\"$subject\"/>";
 					
-					//Actions buttons
-					echo "<td><button name=\"read\" class=\"btn btn-primary\">Read</button></td>";
-					echo "<td><button name=\"answer\" class=\"btn btn-info\">Answer</button></td>";	
-					echo "<td><button name=\"delete\" class=\"btn btn-danger\">Delete</button></td>";	
+					//Actions buttons					
+					echo "<td><button name=\"read\" class=\"btn btn-primary\">Read</button>";					
+					echo "<button name=\"answer\" class=\"btn btn-info\">Answer</button>";	
+					echo "<button name=\"delete\" class=\"btn btn-danger\">Delete</button></td>";	
 					echo "</tr>";
 					echo "</form>";									
 				}					
