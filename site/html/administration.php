@@ -28,7 +28,7 @@
                 </div>
                 <button name="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>submit</button>
             </form>
-            <?php include 'login.php'?>
+            <?php include 'change_password.php'?>
         </div>
 
         <!-- Gestion des utilisateurs! -->    
