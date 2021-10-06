@@ -18,8 +18,22 @@
         <h1 class="text-primary">Administration</h1>		
         <hr style="border-top:1px dotted #ccc;"/>
 		<button class="btn btn-dark" onclick="history.go(-1);">Back</button>
-		<hr style="border-top:1px dotted #ccc;"/>        
-		
+		<hr style="border-top:1px dotted #ccc;"/>    
+        <!-- Gestion du changement de mot de passe! -->
+        <div class="col-md-6">    
+            <form method="POST">
+                <div class="form-group">
+                    <label>Nouveau mot de passe</label>
+                    <input type="text" name="username" class="form-control" required="required"/>
+                </div>
+                <button name="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>submit</button>
+            </form>
+            <?php include 'login.php'?>
+        </div>
+
+        <!-- Gestion des utilisateurs! -->    
+
+
 		
     </body>		
 </html>
