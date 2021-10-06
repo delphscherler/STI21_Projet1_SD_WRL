@@ -20,6 +20,7 @@
 		<button class="btn btn-dark" onclick="history.go(-1);">Back</button>
 		<hr style="border-top:1px dotted #ccc;"/>    
         <!-- Gestion du changement de mot de passe! -->
+        <h2 class="text-tertiary">Changement de mot de passe</h2>		
         <div class="col-md-6">    
             <form method="POST">
                 <div class="form-group">
@@ -30,8 +31,8 @@
             </form>
             <?php include 'change_password.php'?>
         </div>
-
         <!-- Gestion des utilisateurs! -->    
+        <!-- Ajouter un utilisateur!-->
 
 
 		
