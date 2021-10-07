@@ -42,7 +42,7 @@
 
 	if(ISSET($_POST['delete'])) {
 		
-		$uname=$_POST["to_del_username"];    //receiving username field value in $username variable
+		$uname=$_POST["to_del_username"];    //receiving username field value in $uname variable
 
 		$sql="SELECT * FROM users WHERE username='".$uname."'";
 		$ret = $db->query($sql)->fetchAll();
