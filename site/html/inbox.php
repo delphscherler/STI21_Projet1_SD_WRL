@@ -55,26 +55,13 @@
 		<tbody>
 		<tr>
 			<?php 			
-				
-				//echo "Logged in : " . $_SESSION["username"] . ".<br>";
-				
-				// Create (connect to) SQLite database in file
-				$db = new PDO('sqlite:/usr/share/nginx/databases/database.sqlite');
-				// Set errormode to exceptions
-				$db->setAttribute(PDO::ATTR_ERRMODE, 
-										PDO::ERRMODE_EXCEPTION); 
+			   require('connexion.php');
 
-				if(!$db){
-					echo $db->lastErrorMsg();
-					} else {
-				   // echo "Opened database successfully\n";
-				 }
-				 
 				//Select message for the current user
 				$uname=$_SESSION["username"];				
 				$sql = "SELECT * FROM messages WHERE receiver='".$uname."' ORDER BY date DESC";
 								   
-			    foreach  ($db->query($sql) as $row) {					
+			    foreach  ($file_db->query($sql) as $row) {					
 					$sender = $row['sender'];
 					$date = $row['date'];
 					$subject = $row['subject'];
@@ -97,7 +84,7 @@
 				}					
 
 				// Close file db connection
-				$db = null;					
+				$file_db = null;					
 			?>			
 		</tr>			
 		</tbody>

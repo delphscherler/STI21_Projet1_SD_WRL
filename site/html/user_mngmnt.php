@@ -35,8 +35,8 @@
             </div>
             <button name="add" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>add</button>
         </form>
-        <?php include 'admin_actions.php'?>
     </div>
+  
     <!-- Supprimer un utilisateur!-->
     <h3 class="text-tertiary">Delete a user</h3>		
     <div class="col-md-6">    
@@ -47,8 +47,8 @@
             </div>
             <button name="delete" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>delete</button>
         </form>
-        <?php include 'admin_actions.php'?>
     </div>
+    <?php include 'admin_actions.php'?>
 
     </body>		
 </html>

@@ -18,28 +18,19 @@
 		echo "Message is send !";		
 
 		//Saving the message in the database
-		// Create (connect to) SQLite database in file
-		$db = new PDO('sqlite:/usr/share/nginx/databases/database.sqlite');
-		// Set errormode to exceptions
-		$db->setAttribute(PDO::ATTR_ERRMODE, 
-								PDO::ERRMODE_EXCEPTION); 
+		 require('connexion.php');
 
-		if(!$db){
-			echo $db->lastErrorMsg();
-			} else {
-		   //echo "Opened database successfully\n";
-		 }
 
 		$send = "INSERT INTO messages (sender, receiver, subject, date, message) 
 				VALUES ('$sender', '$receiver', '$subject', '$date', '$message_body')";				
 		
 		//echo $send;
 				
-		$db->exec("INSERT INTO messages (sender, receiver, subject, date, message) 
+		$file_db->exec("INSERT INTO messages (sender, receiver, subject, date, message) 
 				VALUES ('$sender', '$receiver', '$subject', '$date', '$message_body')");
 
 		// Close file db connection
-		$db = null;
+		$file_db = null;
 	}
 
 ?>  

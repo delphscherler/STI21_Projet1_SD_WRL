@@ -17,7 +17,7 @@
     <div class="col-md-6 well">
         <h1 class="text-primary">Message</h1>		
         <hr style="border-top:1px dotted #ccc;"/>
-        <button class="btn btn-dark" onclick="history.go(-1);">Back</button>
+        <button class="btn btn-dark" onclick="document.location.href='inbox.php'">Back</button>
 		<hr style="border-top:1px dotted #ccc;"/>
 		
 		

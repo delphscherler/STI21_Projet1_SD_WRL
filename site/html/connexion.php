@@ -64,7 +64,7 @@
     **************************************/
  
     // Close file db connection
-    $file_db = null;
+   // $file_db = null;
   }
   catch(PDOException $e) {
     // Print PDOException message

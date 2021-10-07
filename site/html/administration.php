@@ -17,7 +17,7 @@
     <div class="col-md-6 well">
         <h1 class="text-primary">Administration</h1>		
         <hr style="border-top:1px dotted #ccc;"/>
-		<button class="btn btn-dark" onclick="history.go(-1);">Back</button>
+		<button class="btn btn-dark" onclick="document.location.href='inbox.php'">Back</button>
 		<hr style="border-top:1px dotted #ccc;"/>    
         <!-- Gestion du changement de mot de passe! -->
         <h2 class="text-tertiary">Update password</h2>		
@@ -32,32 +32,22 @@
             <?php include 'change_password.php'?>
         </div>
         <?php
-            // Create (connect to) SQLite database in file
-            $db = new PDO('sqlite:/usr/share/nginx/databases/database.sqlite');
-            // Set errormode to exceptions
-            $db->setAttribute(PDO::ATTR_ERRMODE, 
-                                    PDO::ERRMODE_EXCEPTION); 
 
-            if(!$db){
-                echo $db->lastErrorMsg();
-                } else {
-                //echo "Opened database successfully\n";
-            }
             $uname = $_SESSION['username'];
             $sql="SELECT * FROM users WHERE username='".$uname."'";
             //echo $sql;
+            require('connexion.php');
 
-            foreach  ($db->query($sql) as $row) {
+
+            foreach  ($file_db->query($sql) as $row) {
                 $val = $row['validity'];
-            }
-            echo $val;
-            
+            }            
 
             if($val == 1){
                 include 'user_mngmnt.php';
             }
            // Close file db connection
-            $db = null;	
+            $file_db = null;	
         ?>
 
     </body>		

@@ -1,16 +1,6 @@
 <?php
 
-	// Create (connect to) SQLite database in file
-	$db = new PDO('sqlite:/usr/share/nginx/databases/database.sqlite');
-	// Set errormode to exceptions
-	$db->setAttribute(PDO::ATTR_ERRMODE, 
-							PDO::ERRMODE_EXCEPTION); 
-
-	if(!$db){
-		echo $db->lastErrorMsg();
-		} else {
-	   // echo "Opened database successfully\n";
-	 }
+    require('connexion.php');
 
 	if(ISSET($_POST['add'])) {
 
@@ -24,8 +14,10 @@
 		print $validity;
 		print $role;
 
+
 		$sql="SELECT * FROM users WHERE username='".$uname."'";
-		$ret = $db->query($sql)->fetchAll();
+		$ret = $file_db->query($sql)->fetchAll();
+
 
 		//If username already exists, display error message
 		if ( sizeof($ret) == 1 ){
@@ -33,11 +25,13 @@
 			exit();
 		}
 		else{
-			$db->exec("INSERT INTO users (username, password, validity, role) 
+			$file_db->exec("INSERT INTO users (username, password, validity, role) 
 			VALUES ('$uname', '$password', '$validity', '$role')");
 			echo "New user successfully added";
 			exit();
 		}
+
+
 	}
 
 	if(ISSET($_POST['delete'])) {
@@ -45,7 +39,7 @@
 		$uname=$_POST["to_del_username"];    //receiving username field value in $uname variable
 
 		$sql="SELECT * FROM users WHERE username='".$uname."'";
-		$ret = $db->query($sql)->fetchAll();
+		$ret = $file_db->query($sql)->fetchAll();
 
 		//If username does not exist, display error message
 		if ( sizeof($ret) == 0 ){
@@ -54,12 +48,12 @@
 		}
 		else{
 			$del = "DELETE FROM users WHERE username='".$uname."'";		
-			$db->exec($del);
+			$file_db->exec($del);
 			echo "User successfully deleted";
 			exit();
 		}
 	}
 		
 	// Close file db connection
-	$db = null;	
+	$file_db = null;	
 ?>
