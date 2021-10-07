@@ -47,25 +47,34 @@
                 </div>
                 <div class="form-group">
                     <label>Validity :</label>
-                    <input type="radio" id="val_0" name="validity" value="0" >
+                    <input type="radio" id="val_0" name="validity" value="0" required="required">
                     <label for="html">Inactif</label>
-                    <input type="radio" id="val_1" name="validity" value="1">
+                    <input type="radio" id="val_1" name="validity" value="1" required="required">
                     <label for="css">Actif</label><br>
                 </div>
                 <div class="form-group">
                     <label>Role :</label>
-                    <input type="radio" id="role_0" name="role" value="0">
+                    <input type="radio" id="role_0" name="role" value="0" required="required">
                     <label for="html">Collaborateur</label>
-                    <input type="radio" id="role_1" name="role" value="1">
+                    <input type="radio" id="role_1" name="role" value="1" required="required">
                     <label for="css">Administrateur</label><br>
                 </div>
                 <button name="add" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>add</button>
             </form>
             <?php include 'admin_actions.php'?>
         </div>
-
-
-
-		
+        <!-- Supprimer un utilisateur!-->
+        <h3 class="text-tertiary">Delete a user</h3>		
+        <div class="col-md-6">    
+            <form method="POST">
+                <div class="form-group">
+                    <label>Username :</label>
+                    <input type="text" name="to_del_username" class="form-control" required="required"/>
+                </div>
+                <button name="delete" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>delete</button>
+            </form>
+            <?php include 'admin_actions.php'?>
+        </div>
+    </div>		
     </body>		
 </html>
