@@ -2,13 +2,14 @@
 
 	require('connexion.php');
 
+	$sender = $_POST['sender'];
+	$subject = $_POST['subject'];
+	$date = $_POST['date'];
 
 	if(ISSET($_POST['read'])) {
-		header("Location: show_message.php");				
+		header("Location: show_message.php?sender=$sender&subject=$subject&date=$date");				
 	}
-	if(ISSET($_POST['answer'])) {
-		$sender = $_POST['sender'];
-		$subject = $_POST['subject'];
+	if(ISSET($_POST['answer'])) {		
 		header("Location:new_message.php?sender=$sender&subject=$subject");					
 	}			
 	
