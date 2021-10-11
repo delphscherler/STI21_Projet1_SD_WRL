@@ -48,6 +48,18 @@
             <button name="delete" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>delete</button>
         </form>
     </div>
+
+    <!-- Modifier un utilisateur!-->
+    <h3 class="text-tertiary">Modify a user</h3>		
+    <div class="col-md-6">    
+        <form method="POST">
+            <div class="form-group">
+                <label>Username :</label>
+                <input type="text" name="to_mod_username" class="form-control" required="required"/>
+            </div>
+            <button name="modify" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>modify</button>
+        </form>
+    </div>
     <?php include 'admin_actions.php'?>
 
     </body>		
