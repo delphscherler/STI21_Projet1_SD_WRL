@@ -17,9 +17,26 @@
         <form method="POST">
             <div class="form-group">
                 <label>Username :</label>
-                <input type="text" name="to_show_username" class="form-control" required="required"/>
+                <!--input type="text" name="to_show_username" class="form-control" required="required"/-->
+				<!--Essai d'un truc sympa -->
+				<input list="browsers" name="to_show_username">
+				<datalist id="browsers">
+					<?php
+						require('connexion.php');
+						$sql="SELECT * FROM users";
+						foreach  ($file_db->query($sql) as $row) {
+							$username = $row['username'];						
+							echo "<option name=\"to_show_username\" required=\"required\" value=\"$username\">";
+						}
+						// Close file db connection
+						$file_db = null;
+
+					?>
+				</datalist>
+				<!--Fin de l'essai du truc sympa -->
+				<button name="show" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>show</button>
+
             </div>
-            <button name="show" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>show</button>
         </form>
     </div>
 	<hr style="border-top:1px dotted #ccc;"/>
@@ -39,40 +56,31 @@
 		
 		$uname=$_POST["to_show_username"];    //receiving username field value in $uname variable
 		$sql="SELECT * FROM users WHERE username='".$uname."'";
-		$ret = $file_db->query($sql)->fetchAll();
-
-		//If username does not exist, display error message
-		if ( sizeof($ret) == 0 ){
-			echo '<script type ="text/JavaScript">';  
-			echo 'alert("This username does not exists")';  
-			echo '</script>';	
-			exit();
-		}
-		else{
-			echo "Username : ";
-			echo $uname;
-			foreach  ($file_db->query($sql) as $row) {
-				$val = $row['validity'];		
-				$rol = $row['role'];
-				$pwd = $row['password'];
-				echo " Password : ";
-				echo $pwd;
-				echo " Validity : ";
-				if($row['validity'] == 0){
-					echo " inactive";
-				}
-				if($row['validity'] == 1){
-					echo " active";
-				}
-				echo " Role : ";
-				if($row['role'] == 0){
-					echo " not admin";
-				}
-				if($row['role'] == 1){
-					echo " admin";
-				}
+		echo "Username : ";
+		echo $uname;
+		echo "<br>";
+		foreach  ($file_db->query($sql) as $row) {
+			$val = $row['validity'];		
+			$rol = $row['role'];
+			$pwd = $row['password'];
+			echo " Password : ";
+			echo $pwd;
+			echo "<br>";
+			echo " Validity : ";
+			if($row['validity'] == 0){
+				echo " inactive <br>";
 			}
-
+			if($row['validity'] == 1){
+				echo " active <br>";
+			}
+			echo " Role : ";
+			if($row['role'] == 0){
+				echo " not admin <br>";
+			}
+			if($row['role'] == 1){
+				echo " admin <br>";
+			}
+			
 		}
 		// Close file db connection
 		$file_db = null;
