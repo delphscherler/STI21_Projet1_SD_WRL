@@ -17,25 +17,20 @@
         <form method="POST">
             <div class="form-group">
                 <label>Username :</label>
-                <!--input type="text" name="to_show_username" class="form-control" required="required"/-->
-				<!--Essai d'un truc sympa -->
-				<input list="browsers" name="to_show_username">
+				<input list="browsers" name="to_show_username" class="form-control" required="required">
 				<datalist id="browsers">
 					<?php
 						require('connexion.php');
 						$sql="SELECT * FROM users";
 						foreach  ($file_db->query($sql) as $row) {
 							$username = $row['username'];						
-							echo "<option name=\"to_show_username\" required=\"required\" value=\"$username\">";
+							echo "<option value=\"$username\">";
 						}
 						// Close file db connection
 						$file_db = null;
-
 					?>
 				</datalist>
-				<!--Fin de l'essai du truc sympa -->
-				<button name="show" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>show</button>
-
+				<button name="show" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Show</button>
             </div>
         </form>
     </div>
@@ -60,11 +55,8 @@
 		echo $uname;
 		echo "<br>";
 		foreach  ($file_db->query($sql) as $row) {
-			$val = $row['validity'];		
-			$rol = $row['role'];
-			$pwd = $row['password'];
 			echo " Password : ";
-			echo $pwd;
+			echo $row['password'];
 			echo "<br>";
 			echo " Validity : ";
 			if($row['validity'] == 0){
@@ -80,7 +72,6 @@
 			if($row['role'] == 1){
 				echo " admin <br>";
 			}
-			
 		}
 		// Close file db connection
 		$file_db = null;
