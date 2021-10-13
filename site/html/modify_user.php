@@ -17,19 +17,18 @@
         <form method="POST">
             <div class="form-group">
                 <label>Username :</label>
-				<input list="browsers" name="to_show_username" class="form-control" required="required">
-				<datalist id="browsers">
+				<select class="form-select" name="to_show_username" required="required">
 					<?php
 						require('connexion.php');
 						$sql="SELECT * FROM users";
 						foreach  ($file_db->query($sql) as $row) {
 							$username = $row['username'];						
-							echo "<option value=\"$username\">";
+							echo "<option>$username</option>";
 						}
 						// Close file db connection
 						$file_db = null;
 					?>
-				</datalist>
+				</select>
 				<button name="show" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Show</button>
             </div>
         </form>

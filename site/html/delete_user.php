@@ -12,20 +12,19 @@
     <div class="col-md-6">    
         <form method="POST">
             <div class="form-group">
-                <label>Username :</label>
-                <input list="browsers" name="to_del_username" class="form-control" required="required">
-                <datalist id="browsers">
+                <label class="form-label mt-4">Username :</label>
+				<select class="form-select" name="to_del_username" required="required">
                     <?php
                         require('connexion.php');
                         $sql="SELECT * FROM users";
                         foreach  ($file_db->query($sql) as $row) {
                             $username = $row['username'];						
-                            echo "<option value=\"$username\">";
+							echo "<option>$username</option>";
                         }
                         // Close file db connection
                         $file_db = null;
                     ?>
-                </datalist>
+				</select>
             </div>
             <button name="delete" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>delete</button>
         </form>

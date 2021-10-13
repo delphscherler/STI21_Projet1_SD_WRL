@@ -14,19 +14,18 @@
         <form method="POST">
             <div class="form-group">
                 <label>Username :</label>
-				<input list="browsers" name="val_username" class="form-control" required="required">
-				<datalist id="browsers">
+				<select class="form-select" name="val_username" required="required">
 					<?php
 						require('connexion.php');
 						$sql="SELECT * FROM users";
 						foreach  ($file_db->query($sql) as $row) {
 							$username = $row['username'];						
-							echo "<option value=\"$username\">";
+							echo "<option>$username</option>";
 						}
 						// Close file db connection
 						$file_db = null;
 					?>
-				</datalist>
+				</select>
             </div>
 			<div class="form-group">
                 <label>Validity :</label>
