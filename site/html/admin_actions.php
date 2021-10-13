@@ -56,7 +56,7 @@
 			exit();
 		}
 	}
-	if(ISSET($_POST['modify'])) {
+	if(ISSET($_POST['show'])) {
 		
 		$uname=$_POST["to_mod_username"];    //receiving username field value in $uname variable
 
