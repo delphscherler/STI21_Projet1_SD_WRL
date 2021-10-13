@@ -47,7 +47,11 @@
                   array('username' => 'admin',
                         'password' => 'admin',
                         'validity' => 1 ,
-                        'role' => 1)                        
+                        'role' => 1),
+				  array('username' => 'test',
+                        'password' => 'test',
+                        'validity' => 1 ,
+                        'role' => 0) 
                 ); 
 				
 	/**************************************
