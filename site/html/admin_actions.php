@@ -9,11 +9,6 @@
 		$validity= $_POST["validity"];       //receiving validity value in $validity variable 
 		$role = $_POST["role"];              //receiving role value in $role variable 
 
-		print $uname;
-		print $password;
-		print $validity;
-		print $role;
-
 
 		$sql="SELECT * FROM users WHERE username='".$uname."'";
 		$ret = $file_db->query($sql)->fetchAll();
@@ -61,7 +56,6 @@
 			exit();
 		}
 	}
-
 	if(ISSET($_POST['modify'])) {
 		
 		$uname=$_POST["to_mod_username"];    //receiving username field value in $uname variable
@@ -77,41 +71,34 @@
 			exit();
 		}
 		else{
-			foreach  ($file_db->query($sql) as $row) {					
-				$us = $row['username'];
-				$pa = $row['password'];
-				$va = $row['validity'];
-				$ro = $row['role'];
+			echo $uname;
+			foreach  ($file_db->query($sql) as $row) {
+				$val = $row['validity'];		
+				$rol = $row['role'];
+				$pwd = $row['password'];
+				echo "password : ";
+				echo $pwd;
+				if($row['validity'] == 0){
+					echo " Inactive";
+				}
+				if($row['validity'] == 1){
+					echo " Active";
+				}
+				if($row['role'] == 0){
+					echo " Not Admin";
+				}
+				if($row['role'] == 1){
+					echo " Admin";
+				}
 			}
-			echo ' Current user ';
-			print $us;
-			echo ' has password ';
-			print $pa;
-			//print $va;
-			//print $ro;
+			include 'modify_user.php';
 
-			//Display current status of user
-
-			if($va == 1){
-				echo ' is active ';
-			}
-			else{
-				echo ' is not active ';
-			} 
-			if($ro == 1){
-				echo 'and is an administrator.';
-			} 
-			else{
-				echo 'and is a collaborator.';
-			} 
-			
-			//include 'modify_user.php';
-
-
-			exit();
 		}
 	}
-}
+
+
+
+
 		
 	// Close file db connection
 	$file_db = null;	
