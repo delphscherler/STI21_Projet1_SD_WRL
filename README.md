@@ -28,7 +28,7 @@ Vous pouvez utiliser l'un d'eux pour vous connecter.
 
 Dès que vous êtes connecté vous allez arriver sur la page principale de la messagerie :
 
-<img src="images/inbox.PNG" alt="inbox" style="zoom:80%;" />
+<img src="images/inbox.PNG" alt="inbox" />
 
 Pour la démo, la base de données fournie dans GitHub contient quelques mails.
 
@@ -43,13 +43,13 @@ Depuis cette page vous pouvez :
 
 Voici la page pour écrire un nouveau message :
 
-<img src="images/new_msg.PNG" alt="new_msg" style="zoom: 60%;" />
+<img src="images/new_msg.PNG" alt="new_msg" width="500" />
 
 ## Read
 
 Cette page permet de lire le corps du message. Mais également de répondre ou de supprimer celui-ci.
 
-<img src="images/read.PNG" alt="read" style="zoom:60%;" />
+<img src="images/read.PNG" alt="read" width="500" />
 
 ## Administration
 
@@ -64,13 +64,13 @@ Pour un administrateur de (comme ci-dessous) :
 - modifier un utilisateur
 - supprimer un utilisateur
 
-<img src="images/admin.PNG" alt="admin" style="zoom:60%;" />
+<img src="images/admin.PNG" alt="admin" width="500" />
 
 ## Add user
 
 Cette page permet d'ajouter un utilisateur à la base de données.
 
-<img src="images/add_user.PNG" alt="add_user" style="zoom:60%;" />
+<img src="images/add_user.PNG" alt="add_user" width="500" />
 
 ## Modify user
 
@@ -81,10 +81,10 @@ Cette page permet de :
 - Modifier la validité d'un utilisateur
 - Modifier le rôle d'un utilisateur
 
-<img src="images/modify_user.PNG" alt="modify_user" style="zoom:60%;" />
+<img src="images/modify_user.PNG" alt="modify_user" width="500" />
 
 ## Delete user
 
 Cette page permet de choisir un utilisateur et de le supprimer.
 
-<img src="images/delete_user.PNG" alt="delete_user" style="zoom:60%;" />
+<img src="images/delete_user.PNG" alt="delete_user" width="500" />
