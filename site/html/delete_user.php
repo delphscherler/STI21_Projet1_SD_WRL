@@ -18,6 +18,7 @@
    <!-- Supprimer un utilisateur!-->
    <h2 class="text-tertiary">Delete a user</h2>	
    <hr style="border-top:1px dotted #ccc;"/>
+   <button class="btn btn-info" onclick="document.location.href='inbox.php'">Home</button>
    <button class="btn btn-dark" onclick="document.location.href='administration.php'">Back</button>		
    <hr style="border-top:1px dotted #ccc;"/>
     <div class="col-md-6">    

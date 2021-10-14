@@ -19,6 +19,7 @@
 
     <h2 class="text-tertiary">Add a new user</h2>
 	<hr style="border-top:1px dotted #ccc;"/>	
+	<button class="btn btn-info" onclick="document.location.href='inbox.php'">Home</button>
     <button class="btn btn-dark" onclick="document.location.href='administration.php'">Back</button>	
 	<hr style="border-top:1px dotted #ccc;"/>
     <div class="col-md-6">    
@@ -34,16 +35,16 @@
             <div class="form-group">
                 <label>Validity :</label>
                 <input type="radio" id="val_0" name="validity" value="0" required="required">
-                <label for="html">Inactif</label>
+                <label for="html">Inactive</label>
                 <input type="radio" id="val_1" name="validity" value="1" required="required">
-                <label for="css">Actif</label><br>
+                <label for="css">Active</label><br>
             </div>
             <div class="form-group">
                 <label>Role :</label>
                 <input type="radio" id="role_0" name="role" value="0" required="required">
-                <label for="html">Collaborateur</label>
+                <label for="html">Collaborator</label>
                 <input type="radio" id="role_1" name="role" value="1" required="required">
-                <label for="css">Administrateur</label><br>
+                <label for="css">Administrator</label><br>
             </div>
             <button name="add" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Add</button>
         </form>

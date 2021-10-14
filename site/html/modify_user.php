@@ -18,6 +18,7 @@
    <!-- Modifier un utilisateur!-->
     <h2 class="text-tertiary">Modify user</h2>
 	<hr style="border-top:1px dotted #ccc;"/>
+	<button class="btn btn-info" onclick="document.location.href='inbox.php'">Home</button>
 	<button class="btn btn-dark" onclick="document.location.href='administration.php'">Back</button>	
 	<hr style="border-top:1px dotted #ccc;"/>
 
@@ -52,7 +53,7 @@
 			<button name="update_role" class="btn btn-outline-danger"><span class="glyphicon glyphicon-log-in"></span>Modify role of a user</button>
         </form>
 	<hr style="border-top:1px dotted #ccc;"/>
-
+	<div class="col-md-6 well">
     <?php
     if(ISSET($_POST['show'])) {
 
@@ -60,28 +61,37 @@
 		
 		$uname=$_POST["to_show_username"];    //receiving username field value in $uname variable
 		$sql="SELECT * FROM users WHERE username='".$uname."'";
-		echo "Username : ";
-		echo $uname;
-		echo "<br>";
+		echo "<table class=\"table table-hover\">";
+		echo "<tr>";
+		echo "<td>Username : </td>";
+		echo "<td>$uname</td>";
+		echo "</tr>";
 		foreach  ($file_db->query($sql) as $row) {
-			echo " Password : ";
-			echo $row['password'];
-			echo "<br>";
-			echo " Validity : ";
+			echo "<tr>";
+			echo "<td>Password : </td>";
+			$pass = $row['password'];
+			echo "<td>$pass</td>";
+			echo "</tr>";
+			echo "<tr>";
+			echo "<td>Validity :</td>";
 			if($row['validity'] == 0){
-				echo " inactive <br>";
+				echo "<td>inactive</td>";
 			}
 			if($row['validity'] == 1){
-				echo " active <br>";
+				echo "<td>active</td>";
 			}
-			echo " Role : ";
+			echo "</tr>";
+			echo "<tr>";
+			echo "<td>Role :</td>";
 			if($row['role'] == 0){
-				echo " not admin <br>";
+				echo "<td>not admin </td>";
 			}
 			if($row['role'] == 1){
-				echo " admin <br>";
+				echo "<td>admin </td>";
 			}
+			echo "</tr>";
 		}
+		echo "</table>";
 		// Close file db connection
 		$file_db = null;
 	}
@@ -98,6 +108,6 @@
 		header("Location: modify_user_role.php");
 	}	
     ?>
-
+	</div>
     </body>		
 </html>

@@ -18,6 +18,7 @@
         <!-- Modifier le role d'un utilisateur!-->
 		<h2 class ="text-tertiary"> Modify role of user</h2>
 		<hr style="border-top:1px dotted #ccc;"/>
+		<button class="btn btn-info" onclick="document.location.href='inbox.php'">Home</button>
         <button class="btn btn-dark" onclick="document.location.href='modify_user.php'">Back</button>	
 	    <hr style="border-top:1px dotted #ccc;"/>	
         <div class="col-md-6">    
@@ -40,11 +41,11 @@
                 <div class="form-group">
                     <label>Role :</label>
                     <input type="radio" id="role_0" name="new_role" value="0" required="required">
-                    <label for="html">Collaborateur</label>
+                    <label for="html">Collaborator</label>
                     <input type="radio" id="role_1" name="new_role" value="1" required="required">
-                    <label for="css">Administrateur</label><br>
+                    <label for="css">Administrator</label><br>
                 </div>
-                <button name="upd_role" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Update Role</button>
+                <button name="upd_role" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Update role</button>
             </form>
         </div>
         <?php

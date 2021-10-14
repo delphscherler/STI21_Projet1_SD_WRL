@@ -30,8 +30,17 @@
 							$sender = $_GET['sender'];						
 							echo "<input type=\"text\" name=\"receiver\" class=\"form-control\" required=\"required\" value=\"$sender\">";
 						}
-						else{
-							echo "<input type=\"text\" name=\"receiver\" class=\"form-control\" required=\"required\">";
+						else{							
+							echo "<select class=\"form-select\" name=\"receiver\" required=\"required\">";
+							require('connexion.php');
+							$sql="SELECT * FROM users";
+							foreach  ($file_db->query($sql) as $row) {
+								$username = $row['username'];						
+								echo "<option>$username</option>";
+							}
+							echo "</select>";
+						// Close file db connection
+						$file_db = null;
 						}
 					?>
                 </div>

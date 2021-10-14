@@ -18,6 +18,7 @@
     <!-- Modifier la validité d'un utilisateur!-->
 	<h2 class ="text-tertiary"> Modify validity of user</h2>	
 	<hr style="border-top:1px dotted #ccc;"/>
+	<button class="btn btn-info" onclick="document.location.href='inbox.php'">Home</button>
     <button class="btn btn-dark" onclick="document.location.href='modify_user.php'">Back</button>	
 	<hr style="border-top:1px dotted #ccc;"/> 
 	<div class="col-md-6"> 
@@ -40,11 +41,11 @@
 			<div class="form-group">
                 <label>Validity :</label>
                 <input type="radio" id="val_0" name="new_validity" value="0" required="required">
-                <label for="html">Inactif</label>
+                <label for="html">Inactive</label>
                 <input type="radio" id="val_1" name="new_validity" value="1" required="required">
-                <label for="css">Actif</label><br>
+                <label for="css">Active</label><br>
             </div>
-            <button name="upd_val" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Update Validity</button>
+            <button name="upd_val" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Update validity</button>
         </form>
     </div>
     <?php
