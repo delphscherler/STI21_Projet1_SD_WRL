@@ -7,8 +7,10 @@
     <body>
 
    <!-- Supprimer un utilisateur!-->
-   <h3 class="text-tertiary">Delete a user</h3>	
+   <h2 class="text-tertiary">Delete a user</h2>	
+   <hr style="border-top:1px dotted #ccc;"/>
    <button class="btn btn-dark" onclick="document.location.href='administration.php'">Back</button>		
+   <hr style="border-top:1px dotted #ccc;"/>
     <div class="col-md-6">    
         <form method="POST">
             <div class="form-group">
@@ -26,7 +28,7 @@
                     ?>
 				</select>
             </div>
-            <button name="delete" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>delete</button>
+            <button name="delete" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Delete</button>
         </form>
     </div>
     <?php

@@ -7,10 +7,11 @@
     <body>  
 
 	<!-- Modifier le mot de passe d'un utilisateur!-->
+	<h2 class ="text-tertiary"> Modify password of user</h2>		
+	<hr style="border-top:1px dotted #ccc;"/>	
     <button class="btn btn-dark" onclick="document.location.href='modify_user.php'">Back</button>	
-	<hr style="border-top:1px dotted #ccc;"/>
-	<h4 class ="text-tertiary"> Modify password of a user</h4>		   
-    <div class="col-md-6"> 
+	<hr style="border-top:1px dotted #ccc;"/>	
+	<div class="col-md-6"> 
         <form method="POST">
             <div class="form-group">
                 <label>Username :</label>

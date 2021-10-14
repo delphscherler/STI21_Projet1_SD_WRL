@@ -10,16 +10,12 @@
 		$date = date('d.m.Y H:i');
 
 		//Message confirmation
-		/*echo "Message confirmation:";
-		echo "Receiver: $receiver "; 
-		echo "Subject: $subject";
-		echo "Message: $message_body";
-		echo "Thank you for submitting";*/
-		echo "Message is send !";		
+		echo "<div class=\"alert alert-dismissible alert-success\">";
+		echo "Message is send!";
+		echo "</div>";
 
 		//Saving the message in the database
-		 require('connexion.php');
-
+		require('connexion.php');
 
 		$send = "INSERT INTO messages (sender, receiver, subject, date, message) 
 				VALUES ('$sender', '$receiver', '$subject', '$date', '$message_body')";				

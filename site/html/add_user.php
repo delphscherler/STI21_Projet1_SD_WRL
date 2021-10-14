@@ -8,8 +8,10 @@
        
        <!-- Ajouter un utilisateur!-->
 
-    <h3 class="text-tertiary">Add a new user</h3>	
+    <h2 class="text-tertiary">Add a new user</h2>
+	<hr style="border-top:1px dotted #ccc;"/>	
     <button class="btn btn-dark" onclick="document.location.href='administration.php'">Back</button>	
+	<hr style="border-top:1px dotted #ccc;"/>
     <div class="col-md-6">    
         <form method="POST">
             <div class="form-group">
@@ -34,7 +36,7 @@
                 <input type="radio" id="role_1" name="role" value="1" required="required">
                 <label for="css">Administrateur</label><br>
             </div>
-            <button name="add" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>add</button>
+            <button name="add" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Add</button>
         </form>
     </div>
     <?php

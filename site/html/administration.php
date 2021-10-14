@@ -27,28 +27,27 @@
                     <label>New Password</label>
                     <input type="password" name="new_password" class="form-control" required="required"/>
                 </div>
-                <button name="update" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>update</button>
+                <button name="update" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Update</button>
             </form>
             <?php include 'change_password.php'?>
         </div>
         <?php
-
             $uname = $_SESSION['username'];
             $sql="SELECT * FROM users WHERE username='".$uname."'";
             //echo $sql;
             require('connexion.php');
 
-
             foreach  ($file_db->query($sql) as $row) {
-                $val = $row['validity'];
+                $val = $row['role'];
             }            
 
+			//If administrator -> user management
             if($val == 1){
+				echo "<hr style=\"border-top:1px dotted #ccc;\"/>";
                 include 'user_mngmnt.php';
             }
            // Close file db connection
             $file_db = null;	
         ?>
-
     </body>		
 </html>

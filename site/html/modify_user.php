@@ -7,12 +7,13 @@
     <body>  
    
    <!-- Modifier un utilisateur!-->
-    <h3 class="text-tertiary">Modify a user</h3>
+    <h2 class="text-tertiary">Modify user</h2>
+	<hr style="border-top:1px dotted #ccc;"/>
 	<button class="btn btn-dark" onclick="document.location.href='administration.php'">Back</button>	
 	<hr style="border-top:1px dotted #ccc;"/>
 
    <!-- Voir un utilisateur!-->
-    <h4 class ="text-tertiary"> Show a user</h4>		
+    <h4 class ="text-tertiary"> Show user</h4>		
     <div class="col-md-6">    
         <form method="POST">
             <div class="form-group">

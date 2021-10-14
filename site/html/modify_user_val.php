@@ -7,9 +7,10 @@
     <body>  
 
     <!-- Modifier la validité d'un utilisateur!-->
-    <button class="btn btn-dark" onclick="document.location.href='modify_user.php'">Back</button>	
+	<h2 class ="text-tertiary"> Modify validity of user</h2>	
 	<hr style="border-top:1px dotted #ccc;"/>
-	<h4 class ="text-tertiary"> Modify validity of a user</h4>		   
+    <button class="btn btn-dark" onclick="document.location.href='modify_user.php'">Back</button>	
+	<hr style="border-top:1px dotted #ccc;"/> 
 	<div class="col-md-6"> 
         <form method="POST">
             <div class="form-group">
