@@ -10,14 +10,18 @@
 		   
 	   foreach  ($file_db->query($sql) as $row) {		
 			if($row['validity'] == 0){
-				echo "Inactive account, please contact your administrator";
+				echo "<div class=\"alert alert-dismissible alert-danger\">";
+				echo "Inactive account, please contact your administrator.";
+				echo "</div>";
 				exit();
 			}
 		}
 		
 		$ret = $file_db->query($sql)->fetchAll();
 		if( sizeof($ret) == 0 ){
-			echo "Invalid username or password";
+			echo "<div class=\"alert alert-dismissible alert-danger\">";
+			echo "Invalid username or password!";
+			echo "</div>";
 			exit();
 		}
 		else{
