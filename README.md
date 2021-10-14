@@ -12,7 +12,7 @@ Pour exécuter notre projet :
 
 Vous arrivez sur cette page :
 
-<img src="images/login.PNG" alt="login" width="200" />
+<img src="images/login.PNG" alt="login" width="500" />
 
 Deux utilisateurs sont créés au lancement de l'application :
 Un administrateur :
