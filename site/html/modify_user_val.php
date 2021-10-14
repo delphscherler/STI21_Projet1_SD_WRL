@@ -1,3 +1,12 @@
+<?php
+	session_start();
+	
+	//Control if user is logged in
+	if(!isset($_SESSION['username'])){
+	   header("Location:index.php");
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
