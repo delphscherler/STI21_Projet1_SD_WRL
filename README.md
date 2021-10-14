@@ -12,7 +12,7 @@ Pour exécuter notre projet :
 
 Vous arrivez sur cette page :
 
-<img src="images/login.PNG" alt="login" style="zoom:80%;" />
+<img src="images/login.PNG" alt="login" style="zoom:60%;" />
 
 Deux utilisateurs sont créés au lancement de l'application :
 Un administrateur :
@@ -43,13 +43,13 @@ Depuis cette page vous pouvez :
 
 Voici la page pour écrire un nouveau message :
 
-<img src="images/new_msg.PNG" alt="new_msg" style="zoom: 80%;" />
+<img src="images/new_msg.PNG" alt="new_msg" style="zoom: 60%;" />
 
 ## Read
 
 Cette page permet de lire le corps du message. Mais également de répondre ou de supprimer celui-ci.
 
-<img src="images/read.PNG" alt="read" style="zoom:80%;" />
+<img src="images/read.PNG" alt="read" style="zoom:60%;" />
 
 ## Administration
 
@@ -64,13 +64,13 @@ Pour un administrateur de (comme ci-dessous) :
 - modifier un utilisateur
 - supprimer un utilisateur
 
-<img src="images/admin.PNG" alt="admin" style="zoom:80%;" />
+<img src="images/admin.PNG" alt="admin" style="zoom:60%;" />
 
 ## Add user
 
 Cette page permet d'ajouter un utilisateur à la base de données.
 
-<img src="images/add_user.PNG" alt="add_user" style="zoom:80%;" />
+<img src="images/add_user.PNG" alt="add_user" style="zoom:60%;" />
 
 ## Modify user
 
@@ -81,10 +81,10 @@ Cette page permet de :
 - Modifier la validité d'un utilisateur
 - Modifier le rôle d'un utilisateur
 
-<img src="images/modify_user.PNG" alt="modify_user" style="zoom:80%;" />
+<img src="images/modify_user.PNG" alt="modify_user" style="zoom:60%;" />
 
 ## Delete user
 
 Cette page permet de choisir un utilisateur et de le supprimer.
 
-<img src="images/delete_user.PNG" alt="delete_user" style="zoom:80%;" />
+<img src="images/delete_user.PNG" alt="delete_user" style="zoom:60%;" />
