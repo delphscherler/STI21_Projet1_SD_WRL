@@ -15,12 +15,13 @@ Vous arrivez sur cette page :
 <img src="images/login.PNG" alt="login" width="500" />
 
 Deux utilisateurs sont créés au lancement de l'application :
+
 Un administrateur :
-- username : admin
-- password : admin
+username : admin
+password : admin
 Un collaborateur :
-- username : test
-- password : test
+username : test
+password : test
 
 Vous pouvez utiliser l'un d'eux pour vous connecter.
 
