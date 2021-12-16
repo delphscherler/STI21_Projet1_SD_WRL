@@ -17,7 +17,7 @@
     /**************************************
     * Create tables                       *
     **************************************/
- 
+    /*
     // Create users
     $file_db->exec("CREATE TABLE IF NOT EXISTS users (
                     id INTEGER PRIMARY KEY, 
@@ -35,11 +35,12 @@
 					date TEXT,
 					message TEXT)"); 
 	
- 
+    */
     /**************************************
     * Set initial data                    *
     **************************************/
- 
+
+      /*
     // Array with some test users to insert to database
 	//validity = 1 -> valid / validity = 0 -> not valid
 	//role = 1 -> admin / role = 0 -> user
@@ -53,16 +54,16 @@
                         'validity' => 1 ,
                         'role' => 0) 
                 ); 
-				
+	*/
 	/**************************************
     * Play with databases and tables      *
     **************************************/ 
-
+    /*
     foreach ($users as $u) {        
         $file_db->exec("INSERT OR IGNORE INTO users (username, password, validity, role) 
                 VALUES ('{$u['username']}', '{$u['password']}', '{$u['validity']}', '{$u['role']}')");
     }
- 
+    */
     /**************************************
     * Close db connections                *
     **************************************/
@@ -74,4 +75,3 @@
     // Print PDOException message
     echo $e->getMessage();
   }
-?>
