@@ -59,11 +59,20 @@
             $password=$_POST["usr_password"];    //receiving password field value in $password variable  
             $validity= $_POST["validity"];       //receiving validity value in $validity variable 
             $role = $_POST["role"];              //receiving role value in $role variable 
-    
-    
+
+            if(!verifyPassword($password)){
+                echo "<div class=\"alert alert-dismissible alert-danger\">";
+                echo "Password must contain between 8 and 64 characters.";
+                echo "</div>";
+                exit();
+            }
+
+            #Generation du hachage du mot de passe
+            $password = password_hash($password, PASSWORD_DEFAULT);
+
             $sql="SELECT * FROM users WHERE username='".$uname."'";
             $ret = $file_db->query($sql)->fetchAll();
-    
+
     
             //If username already exists, display error message
             if ( sizeof($ret) == 1 ){

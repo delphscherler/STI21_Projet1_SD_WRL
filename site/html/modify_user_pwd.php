@@ -42,23 +42,14 @@
                 <label>Password :</label>
                 <input type="password" name="new_password" class="form-control" required="required"/>
             </div>
-            <button name="upd_pwd" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Update password</button>
+            <button name="update" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Update password</button>
         </form>
-    </div>
-    <?php
-        if(ISSET($_POST['upd_pwd'])) {
-
-            require('connexion.php');
-            $uname=$_POST["pwd_username"];    //receiving username field value in $uname variable
-            $upd = "UPDATE users SET password='".$_POST['new_password']."' WHERE username='".$uname."'";		
-            $file_db->exec($upd);
-            echo '<script type ="text/JavaScript">';  
-            echo 'alert("Password successfully updated")';  
-            echo '</script>';	
-            exit();  
-            // Close file db connection
-            $file_db = null;
+        <?php include 'change_password.php';
+        if(isset($_POST['update'])){
+            changePassword($_POST["pwd_username"], $_POST['new_password']);
         }
-    ?>
+        ?>
+    </div>
+
     </body>		
 </html>

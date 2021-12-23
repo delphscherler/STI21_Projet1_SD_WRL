@@ -29,7 +29,12 @@
                 </div>
                 <button name="update" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Update</button>
             </form>
-            <?php include 'change_password.php'?>
+            <?php
+                require_once('change_password.php');
+                if(isset($_POST['update'])){
+                    changePassword($_SESSION['username'], $_POST['new_password']);
+                }
+            ?>
         </div>
         <?php
             $uname = $_SESSION['username'];
