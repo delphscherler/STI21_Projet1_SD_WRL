@@ -13,12 +13,12 @@ require_once __DIR__.'/includes/header.php';
     <div class="col-md-6">
         <form method="POST">
             <div class="form-group">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control" required="required"/>
+                <label for="username">Username</label>
+                <input id="username" type="text" name="username" class="form-control" required="required"/>
             </div>
             <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control" required="required"/>
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" class="form-control" required="required"/>
             </div>
             <button name="login" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Login</button>
          </form>
