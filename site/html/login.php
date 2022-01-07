@@ -1,37 +1,22 @@
 <?php
-	if(ISSET($_POST['login'])){		
-		require('connexion.php');
 
-		$uname=$_POST['username'];
-		$password=$_POST['password'];
+require_once __DIR__.'/model/entities/user.php';
+require_once __DIR__.'/helper.php';
 
-		$stmt = $file_db->prepare("SELECT * FROM users WHERE username='".$uname."'");
-		$stmt->execute();
-		$res = $stmt->fetch();
-		$passwordDB = $res['password'];
-		//On vérifie le mot de passe
-        if(password_verify($password, $passwordDB)){
-            //On vérifie la validité
-            if($res['validity'] == 0){
-                echo "<div class=\"alert alert-dismissible alert-danger\">";
-                echo "Inactive account, please contact your administrator.";
-                echo "</div>";
-                exit();
-            }
-            //On crée la session
-            $_SESSION["username"] = $uname;
-            //On redirige sur inbox
-            header('Location: inbox.php');
-            exit();
-        }
-        else{
-            echo "<div class=\"alert alert-dismissible alert-danger\">";
-            echo "Invalid username or password!";
-            echo "</div>";
-            exit();
-        }
+if (isset($_POST['login'])) {
 
-		// Close file db connection
-		$file_db = null;
-	}
-?>
+    $uname  = $_POST['username'];
+    $passwd = $_POST['password'];
+
+    $user = (new User())->find('username = ?', [$uname]);
+
+    if ($user && password_verify($passwd, $user->password) && $user->validity) {
+        // create session
+        $_SESSION["username"] = $user->id;
+        // return to inbox
+        redirect('inbox.php');
+    } else {
+        addFlashMessage('danger', 'Invalid username or password!');
+        redirect('index.php');
+    }
+}
