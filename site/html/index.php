@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once __DIR__.'/login.php';
+require_once __DIR__.'/action/login.php';
 require_once __DIR__.'/includes/header.php';
 ?>
 
@@ -11,7 +11,7 @@ require_once __DIR__.'/includes/header.php';
     <h2 class="text-primary">Please login to see your messsages</h2>
     <hr style="border-top:1px dotted #ccc;"/>
     <div class="col-md-6">
-        <form method="POST">
+        <form method="post">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input id="username" type="text" name="username" class="form-control" required="required"/>
