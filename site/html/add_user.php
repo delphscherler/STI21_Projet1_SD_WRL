@@ -1,14 +1,14 @@
 <?php
-	session_start();
-	
-	//Control if user is logged in
-	if(!isset($_SESSION['uid'])){
-	   header("Location:index.php");
-	}
+session_start();
+
+//Control if user is logged in
+if(!isset($_SESSION['uid'])){
+   header("Location:index.php");
+}
 
 require_once __DIR__.'/action/add_user.php';
 
-    require_once __DIR__.'/includes/header.php';
+require_once __DIR__.'/includes/header.php';
 ?>
        
        <!-- Ajouter un utilisateur!-->
