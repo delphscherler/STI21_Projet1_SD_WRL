@@ -2,7 +2,7 @@
 	session_start();
 	
 	//Control if user is logged in
-	if(!isset($_SESSION['username'])){
+	if(!isset($_SESSION['uid'])){
 	   header("Location:index.php");
 	}
 	
@@ -28,18 +28,19 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
-		<link rel="stylesheet" type="text/css" href="bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css"/>
     </head>
 <body>
     <h1 class="text-primary">Inbox</h1>
 	<?php
-		$user = $_SESSION['username'];		
+		$user = $_SESSION['uid'];
 		echo "<h2 class=\"text-primary\">Hello $user!</h2>";
 	?>
 	<hr style="border-top:1px dotted #ccc;"/>
 	<form method="POST">
 		<button name="new" class="btn btn-outline-primary">New message</button>
 		<button name="admin" class="btn btn-outline-info">Administration</button>
+        <a href="modify_passwd.php" class="btn btn-outline-info">Change my password</a>
 		<button name="logout" class="btn btn-outline-danger">Log out</button>
 	</form>
 	<hr style="border-top:1px dotted #ccc;"/>
