@@ -2,18 +2,14 @@
 	session_start();
 	
 	//Control if user is logged in
-	if(!isset($_SESSION['username'])){
+	if(!isset($_SESSION['uid'])){
 	   header("Location:index.php");
 	}
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
-		<link rel="stylesheet" type="text/css" href="bootstrap.css"/>
-    </head>
-    <body>
+require_once __DIR__.'/action/add_user.php';
+
+    require_once __DIR__.'/includes/header.php';
+?>
        
        <!-- Ajouter un utilisateur!-->
 
@@ -23,14 +19,14 @@
     <button class="btn btn-dark" onclick="document.location.href='administration.php'">Back</button>	
 	<hr style="border-top:1px dotted #ccc;"/>
     <div class="col-md-6">    
-        <form method="POST">
+        <form method="post">
             <div class="form-group">
-                <label>Username :</label>
-                <input type="text" name="usr_username" class="form-control" required="required"/>
+                <label for="username">Username :</label>
+                <input id="username" type="text" name="username" class="form-control" required="required"/>
             </div>
             <div class="form-group">
-                <label>Password :</label>
-                <input type="password" name="usr_password" class="form-control" required="required"/>
+                <label for="password">Password :</label>
+                <input id="password" type="password" name="password" class="form-control" required="required"/>
             </div>
             <div class="form-group">
                 <label>Validity :</label>
@@ -49,50 +45,6 @@
             <button name="add" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Add</button>
         </form>
     </div>
-    <?php
 
-    	if(ISSET($_POST['add'])) {
-
-            require('connexion.php');
-
-            $uname=$_POST["usr_username"];    //receiving username field value in $uname variable
-            $password=$_POST["usr_password"];    //receiving password field value in $password variable  
-            $validity= $_POST["validity"];       //receiving validity value in $validity variable 
-            $role = $_POST["role"];              //receiving role value in $role variable 
-
-            if(!verifyPassword($password)){
-                echo "<div class=\"alert alert-dismissible alert-danger\">";
-                echo "Password must contain between 8 and 64 characters.";
-                echo "</div>";
-                exit();
-            }
-
-            #Generation du hachage du mot de passe
-            $password = password_hash($password, PASSWORD_DEFAULT);
-
-            $sql="SELECT * FROM users WHERE username='".$uname."'";
-            $ret = $file_db->query($sql)->fetchAll();
-
-    
-            //If username already exists, display error message
-            if ( sizeof($ret) == 1 ){
-                echo '<script type ="text/JavaScript">';  
-                echo 'alert("This username already exists")';  
-                echo '</script>';
-                exit();
-            }
-            else{
-                $file_db->exec("INSERT INTO users (username, password, validity, role) 
-                VALUES ('$uname', '$password', '$validity', '$role')");					
-                echo '<script type ="text/JavaScript">';  
-                echo 'alert("New user successfully added")';  
-                echo '</script>';
-                exit();
-            }
-            		
-            // Close file db connection
-            $file_db = null;
-        }
-        ?>
-    </body>		
-</html>
+<?php
+require_once __DIR__.'/includes/footer.php';
