@@ -1,25 +1,28 @@
 <?php
-ini_set('display_startup_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(-1);
-
-
 require_once __DIR__.'/../model/entities/user.php';
 require_once __DIR__.'/../validation.php';
 require_once __DIR__.'/../helper.php';
 
-
 if (isset($_POST['update'])) {
-    $user = (new User())->find('id = ?', [$_SESSION['uid']]);
+    $authUser = (new User())->find('id = ?', [$_SESSION['uid']]);
 
-    if (!verifyPassword($_POST['new_password'])) {
-        addFlashMessage('danger', 'Password must contain between 8 and 64 characters.');
-        redirect('administration.php');
+    // check if a non admin is trying to change the password of another user
+    if ($_POST['user_id'] !== $_SESSION['uid'] && $authUser->role != 1) {
+        // if this is the case, we display an error message
+        addFlashMessage('danger', 'You can only change your own password');
+    } else {
+        // fetch the user we want to modifyx
+        $user = $_POST['user_id'] === $_SESSION['uid'] ? $authUser : (new User())->find('id = ?', [$_POST['user_id']]);
+
+        // make sure the password respects our policy
+        if (!verifyPassword($_POST['new_password'])) {
+            addFlashMessage('danger', 'Password must contain between 8 and 64 characters.');
+        } else {
+            // hash the password and update the user with the new hash
+            $user->password = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
+            $user->save();
+
+            addFlashMessage('success', 'Password successfully updated!');
+        }
     }
-
-    $user->password = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
-    $user->save();
-
-    addFlashMessage('success', 'Password successfully updated!');
-    redirect('administration.php');
 }
