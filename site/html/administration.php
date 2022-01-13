@@ -26,25 +26,11 @@ require_once __DIR__.'/includes/header.php';
             <button name="update" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Update</button>
         </form>
     </div>
-    <?php
 
-        $uname = $_SESSION['username'];
-        $sql="SELECT * FROM users WHERE username='".$uname."'";
-        //echo $sql;
-        require('connexion.php');
-
-        foreach  ($file_db->query($sql) as $row) {
-            $val = $row['role'];
-        }
-        $val=1;
-        //If administrator -> user management
-        if($val == 1){
-            echo "<hr style=\"border-top:1px dotted #ccc;\"/>";
-            include 'user_mngmnt.php';
-        }
-       // Close file db connection
-        $file_db = null;
-    ?>
+    <h2 class="text-tertiary">Manage users</h2>
+    <a href="add_user.php" class="btn btn-outline-primary">Add user</a>
+    <a href="modify_user.php" class="btn btn-outline-info">Modify user</a>
+    <a href="delete_user.php" class="btn btn-outline-danger">Delete user</a>
 </div>
 <?php
 require_once __DIR__.'/includes/footer.php';
