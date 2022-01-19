@@ -6,7 +6,7 @@ if (isset($_POST['login'])) {
     $uname  = $_POST['username'];
     $passwd = $_POST['password'];
 
-    $user = (new User())->find('username = ?', [$uname]);
+    $user = User::getByUsername($uname);
     if ($user && password_verify($passwd, $user->password) && $user->validity) {
         // create session
         $_SESSION["uid"] = $user->id;

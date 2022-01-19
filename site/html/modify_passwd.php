@@ -6,7 +6,6 @@ if(!isset($_SESSION['uid'])){
 }
 
 require_once __DIR__.'/action/change_password.php';
-
 require_once __DIR__.'/includes/header.php';
 ?>
 <div class="col-md-6 well">

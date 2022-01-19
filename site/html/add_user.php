@@ -7,7 +7,6 @@ if(!isset($_SESSION['uid'])){
 }
 
 require_once __DIR__.'/action/add_user.php';
-
 require_once __DIR__.'/includes/header.php';
 ?>
 <h2 class="text-tertiary">Add a new user</h2>

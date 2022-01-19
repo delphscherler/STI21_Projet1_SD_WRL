@@ -10,11 +10,10 @@ if(isset($_POST['add'])) {
     $validity = $_POST['validity'];
     $role = $_POST['role'];
 
-    if ((new User())->find('username = ?', [$uname])) {
+    if (User::getByUsername($uname)) {
         addFlashMessage('danger', 'Username already used!');
         redirect('add_user.php');
     }
-
 
     if (!verifyPassword($passwd)) {
         addFlashMessage('danger', 'Password must contain between 8 and 64 characters!');

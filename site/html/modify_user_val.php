@@ -11,7 +11,7 @@ if(!isset($_SESSION['uid'])){
 
 require_once __DIR__.'/model/entities/user.php';
 
-$user = (new User())->find('id = ?', [$_GET['id']]);
+$user = User::getById($_GET['id']);
 
 require_once __DIR__.'/action/change_validity.php';
 require_once __DIR__.'/includes/header.php';

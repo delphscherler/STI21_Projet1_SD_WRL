@@ -12,7 +12,7 @@ if (!STIAuthorization::access(STIAuthorization::ADMIN)) {
 require_once __DIR__.'/model/entities/user.php';
 require_once __DIR__.'/action/change_password.php';
 
-$users = (new User())->findAll();
+$users = User::getAll();
 
 require_once __DIR__.'/includes/header.php';
 ?>

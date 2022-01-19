@@ -4,15 +4,15 @@ require_once __DIR__.'/../validation.php';
 require_once __DIR__.'/../helper.php';
 
 if (isset($_POST['update'])) {
-    $authUser = (new User())->find('id = ?', [$_SESSION['uid']]);
+    $authUser = User::getById($_SESSION['uid']);
 
     // check if a non admin is trying to change the password of another user
     if ($_POST['user_id'] !== $_SESSION['uid'] && $authUser->role != 1) {
         // if this is the case, we display an error message
         addFlashMessage('danger', 'You can only change your own password');
     } else {
-        // fetch the user we want to modifyx
-        $user = $_POST['user_id'] === $_SESSION['uid'] ? $authUser : (new User())->find('id = ?', [$_POST['user_id']]);
+        // fetch the user we want to modify
+        $user = $_POST['user_id'] === $_SESSION['uid'] ? $authUser : User::getById($_POST['user_id']);
 
         // make sure the password respects our policy
         if (!verifyPassword($_POST['new_password'])) {
