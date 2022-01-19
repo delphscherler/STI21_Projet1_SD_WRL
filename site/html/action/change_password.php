@@ -1,10 +1,17 @@
 <?php
 require_once __DIR__.'/../model/entities/user.php';
-require_once __DIR__.'/../validation.php';
 require_once __DIR__.'/../helper.php';
+require_once __DIR__.'/../validation.php';
+require_once __DIR__.'/../authorization.php';
 
 if (isset($_POST['update'])) {
     $authUser = User::getById($_SESSION['uid']);
+
+    // Make sure the current user has the correct permission
+    if ($_POST['user_id'] !== $_SESSION['uid'] && !STIAuthorization::access(STIAuthorization::ADMIN)) {
+        addFlashMessage('info', 'You don\'t have the permissions to access this page');
+        redirect('inbox.php');
+    }
 
     // check if a non admin is trying to change the password of another user
     if ($_POST['user_id'] !== $_SESSION['uid'] && $authUser->role != 1) {

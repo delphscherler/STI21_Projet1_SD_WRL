@@ -2,8 +2,14 @@
 require_once __DIR__.'/../model/entities/user.php';
 require_once __DIR__.'/../helper.php';
 require_once __DIR__.'/../validation.php';
+require_once __DIR__.'/../authorization.php';
 
 if(isset($_POST['add'])) {
+    // Make sure the current user has the correct permission
+    if (!STIAuthorization::access(STIAuthorization::ADMIN)) {
+        addFlashMessage('info', 'You don\'t have the permissions to access this page');
+        redirect('inbox.php');
+    }
 
     $uname = $_POST['username'];
     $passwd = $_POST['password'];
