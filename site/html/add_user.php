@@ -1,9 +1,12 @@
 <?php
 session_start();
 
-//Control if user is logged in
-if(!isset($_SESSION['uid'])){
-   header("Location:index.php");
+require_once __DIR__.'/authorization.php';
+require_once __DIR__.'/helper.php';
+// Make sure the current user has the correct permission
+if (!STIAuthorization::access(STIAuthorization::ADMIN)) {
+    addFlashMessage('info', 'You don\'t have the permissions to access this page');
+    redirect('inbox.php');
 }
 
 require_once __DIR__.'/action/add_user.php';

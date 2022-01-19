@@ -4,9 +4,12 @@ ini_set('display_errors', 1);
 error_reporting(-1);
 session_start();
 
-//Control if user is logged in
-if(!isset($_SESSION['uid'])){
-   header("Location:index.php");
+require_once __DIR__.'/authorization.php';
+require_once __DIR__.'/helper.php';
+// Make sure the current user has the correct permission
+if (!STIAuthorization::access(STIAuthorization::ADMIN)) {
+    addFlashMessage('info', 'You don\'t have the permissions to access this page');
+    redirect('inbox.php');
 }
 
 require_once __DIR__.'/model/entities/user.php';
@@ -18,7 +21,7 @@ require_once __DIR__.'/includes/header.php';
 ?>
 
 <!-- Modifier le role d'un utilisateur!-->
-<h2 class ="text-tertiary"> Modify role of user</h2>
+<h2 class ="text-tertiary">Modify role of user</h2>
 <hr style="border-top:1px dotted #ccc;"/>
 <button class="btn btn-info" onclick="document.location.href='inbox.php'">Home</button>
 <button class="btn btn-dark" onclick="document.location.href='administration.php'">Back</button>

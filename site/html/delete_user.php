@@ -1,10 +1,12 @@
 <?php
 session_start();
 
-//Control if user is logged in
-if(!isset($_SESSION['uid'])){
-    var_dump('what');
-   header("Location:index.php");
+require_once __DIR__.'/authorization.php';
+require_once __DIR__.'/helper.php';
+// Make sure the current user has the correct permission
+if (!STIAuthorization::access(STIAuthorization::ADMIN)) {
+    addFlashMessage('info', 'You don\'t have the permissions to access this page');
+    redirect('inbox.php');
 }
 
 require_once __DIR__.'/model/entities/user.php';
