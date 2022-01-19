@@ -13,4 +13,16 @@ class User extends Entity {
     protected $password = '';
     protected $validity = 1;
     protected $role = 0;
+
+    public static function getById($id) {
+        return (new User())->find('id = ?', [$id]);
+    }
+
+    public static function getByUsername($uname) {
+        return (new User())->find('username = ?', [$uname]);
+    }
+
+    public static function getAll() {
+        return (new User())->findAll();
+    }
 }
