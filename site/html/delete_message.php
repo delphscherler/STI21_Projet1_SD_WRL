@@ -1,5 +1,12 @@
 <?php
 session_start();
+
+// make sure an id was given
+if (!isset($_GET['id'])) {
+    addFlashMessage('warning', 'Something went wrong');
+    redirect('inbox.php');
+}
+
 require_once __DIR__.'/authorization.php';
 
 if (!STIAuthorization::access()) {

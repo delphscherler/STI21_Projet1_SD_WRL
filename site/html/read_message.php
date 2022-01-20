@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+// make sure an id was given
+if (!isset($_GET['id'])) {
+    addFlashMessage('warning', 'Something went wrong');
+    redirect('inbox.php');
+}
+
 require_once __DIR__.'/helper.php';
 require_once __DIR__.'/authorization.php';
 require_once __DIR__.'/model/entities/user.php';
@@ -10,8 +16,6 @@ if (!STIAuthorization::access()) {
     addFlashMessage('info', 'You need to login!');
     redirect('inbox.php');
 }
-
-// TODO make sure $_GET['id'] was given
 
 // get the message we want to view
 $message = Message::getById($_GET['id']);
