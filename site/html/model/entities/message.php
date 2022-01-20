@@ -13,4 +13,19 @@ class Message extends Entity {
     protected $subject = '';
     protected $date = '';
     protected $message = '';
+
+    public static function getAll($filters = []) {
+
+        $filters = array_merge([
+            'receiver' => null,
+        ], $filters);
+
+        $where = '';
+
+        if ($filters['receiver']) {
+            $where .= ' receiver = :receiver';
+        }
+
+        return (new Message())->findAll($where, $filters);
+    }
 }
