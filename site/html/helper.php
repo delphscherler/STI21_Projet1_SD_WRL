@@ -11,3 +11,7 @@ function redirect($target, $code = 301) {
     header("Location: $target");
     exit();
 }
+
+function generateCSRFToken(){
+    $_SESSION['token'] = md5(uniqid());
+}
