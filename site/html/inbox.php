@@ -1,10 +1,8 @@
 <?php
-ini_set('display_startup_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(-1);
-
 session_start();
+
 require_once __DIR__.'/authorization.php';
+require_once __DIR__.'/helper.php';
 require_once __DIR__.'/model/entities/user.php';
 require_once __DIR__.'/model/entities/message.php';
 
@@ -44,14 +42,12 @@ require_once __DIR__.'/includes/header.php';
 <h2 class="text-primary">Hello <?= $user->username ?>!</h2>
 <hr style="border-top:1px dotted #ccc;"/>
 
-<form method="POST">
-    <button name="new" class="btn btn-outline-primary">New message</button>
-    <?php if (STIAuthorization::access(STIAuthorization::ADMIN)): ?>
-    <button name="admin" class="btn btn-outline-info">Administration</button>
-    <?php endif; ?>
-    <a href="modify_passwd.php" class="btn btn-outline-info">Change my password</a>
-    <button name="logout" class="btn btn-outline-danger">Log out</button>
-</form>
+<a href="send_message.php" class="btn btn-outline-primary">New message</a>
+<?php if (STIAuthorization::access(STIAuthorization::ADMIN)): ?>
+    <a href="administration.php" class="btn btn-outline-info">Administration</a>
+<?php endif; ?>
+<a href="modify_passwd.php" class="btn btn-outline-info">Change my password</a>
+<a href="logout.php" class="btn btn-outline-danger">Logout</a>
 
 <hr style="border-top:1px dotted #ccc;"/>
 
