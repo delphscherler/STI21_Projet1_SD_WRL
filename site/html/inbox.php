@@ -20,7 +20,7 @@ require_once __DIR__.'/includes/header.php';
 ?>
 
 <h1 class="text-primary">Inbox</h1>
-<h2 class="text-primary">Hello <?= $user->username ?>!</h2>
+<h2 class="text-primary">Hello <?= htmlentities($user->username) ?>!</h2>
 <hr style="border-top:1px dotted #ccc;"/>
 
 <a href="send_message.php" class="btn btn-outline-primary">New message</a>
