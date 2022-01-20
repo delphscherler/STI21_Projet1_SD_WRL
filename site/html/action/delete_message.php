@@ -10,6 +10,8 @@ if (isset($_POST['cancel'])) {
 if (isset($_POST['delete'])) {
     $message = Message::getById($_POST['message_id']);
 
+    // make sure that it's a connected user performing the request and that he's
+    // trying to delete one of his messages
     if ($_SESSION['uid'] !== $message->receiver || !STIAuthorization::access()) {
         addFlashMessage('info', 'You don\'t have the permissions to access this page');
         redirect('inbox.php');
