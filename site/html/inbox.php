@@ -16,25 +16,6 @@ $messages = Message::getAll([
 ]);
 $user = User::getById($_SESSION['uid']);
 
-
-
-// Logout and close session
-if(ISSET($_POST['logout'])) {
-    session_unset();
-    session_destroy();
-    header('Location: index.php');
-}
-
-//New message
-if(ISSET($_POST['new'])) {
-    header("Location: send_message.php");
-}
-
-//Administration
-if(ISSET($_POST['admin'])) {
-    header("Location: administration.php");
-}
-
 require_once __DIR__.'/includes/header.php';
 ?>
 
