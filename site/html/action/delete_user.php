@@ -4,8 +4,6 @@ require_once __DIR__.'/../helper.php';
 require_once __DIR__.'/../authorization.php';
 
 if (isset($_POST['cancel'])) {
-    // delete CSRF token
-    unset($_SESSION['token']);
     redirect('administration.php');
 }
 
