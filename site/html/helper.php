@@ -15,3 +15,10 @@ function redirect($target, $code = 301) {
 function generateCSRFToken(){
     $_SESSION['token'] = md5(uniqid());
 }
+
+function checkCSRFToken($token){
+        if (!$token || $token !== $_SESSION['token']) {
+            header($_SERVER['SERVER_PROTOCOL'] . ' 405 Method Not Allowed');
+            exit;
+        }
+}
