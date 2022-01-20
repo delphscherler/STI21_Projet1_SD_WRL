@@ -2,6 +2,7 @@
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
+
 session_start();
 require_once __DIR__.'/authorization.php';
 require_once __DIR__.'/model/entities/user.php';
@@ -17,6 +18,8 @@ $messages = Message::getAll([
 ]);
 $user = User::getById($_SESSION['uid']);
 
+
+
 // Logout and close session
 if(ISSET($_POST['logout'])) {
     session_unset();
@@ -26,7 +29,7 @@ if(ISSET($_POST['logout'])) {
 
 //New message
 if(ISSET($_POST['new'])) {
-    header("Location: new_message.php");
+    header("Location: send_message.php");
 }
 
 //Administration
@@ -68,9 +71,9 @@ require_once __DIR__.'/includes/header.php';
             <td><?= $message->date ?></td>
             <td><?= $message->subject ?></td>
             <td>
-                <a href="#read.php" class="btn btn-primary">Read</a>
-                <a href="#answer.php" class="btn btn-info">Answer</a>
-                <a href="#delete.php" class="btn btn-danger">Delete</a>
+                <a href="read_message.php?id=<?= $message->id ?>" class="btn btn-primary">Read</a>
+                <a href="send_message.php?receiver=<?= $message->sender ?>" class="btn btn-info">Answer</a>
+                <a href="delete_message.php?id=<?= $message->id ?>" class="btn btn-danger">Delete</a>
             </td>
         </tr>
     <?php endforeach; ?>
