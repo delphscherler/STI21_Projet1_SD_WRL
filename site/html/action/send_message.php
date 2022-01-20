@@ -23,10 +23,12 @@ if (isset($_POST['send'])) {
     $message = new Message();
 
     $message->sender = $_SESSION['uid'];
-    $message->receiver = $_POST['receiver'];
+    $message->receiver = $receiver->id;
     // sanitize user input to avoid XSS attack
     $message->subject = htmlspecialchars($_POST['subject']);
     $message->message = htmlspecialchars($_POST['message']);
     $message->date = date('Y-m-d');
     $message->save();
+
+    addFlashMessage('success', "Message was successfully sent to {$receiver->username}");
 }

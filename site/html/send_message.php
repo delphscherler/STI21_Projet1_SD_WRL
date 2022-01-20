@@ -14,6 +14,7 @@ require_once __DIR__.'/action/send_message.php';
 
 require_once __DIR__.'/includes/header.php';
 ?>
+
 <div class="col-md-6 well">
 <h1 class="text-primary">New Message</h1>
 <hr style="border-top:1px dotted #ccc;"/>
