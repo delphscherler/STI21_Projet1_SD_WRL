@@ -28,4 +28,8 @@ class Message extends Entity {
 
         return (new Message())->findAll($where, $filters);
     }
+
+    public static function getById($id) {
+        return (new Message())->find('id = ?', [$id]);
+    }
 }
