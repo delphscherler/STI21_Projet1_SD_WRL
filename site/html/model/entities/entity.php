@@ -47,7 +47,7 @@ class Entity {
         }
 
         $updating = false;
-        // make sure we're saving a new entity
+        // determine if we're creating an entity or updating one
         foreach (static::$primary_keys as $pk) {
             if ($this->$pk) {
                 $updating = true;
