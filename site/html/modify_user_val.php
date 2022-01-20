@@ -41,7 +41,7 @@ generateCSRFToken();
             <input id="val_active" type="radio" id="val_1" name="new_validity" value="1" required <?= (int)$user->validity === 1 ? 'checked' : '' ?>>
             <label for="val_active">Active</label><br>
         </div>
-        <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+        <input type="hidden" name="csrfmiddlewaretoken" value="<?= $_SESSION['csrfmiddlewaretoken'] ?>">
         <button name="update" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Update validity</button>
     </form>
 </div>

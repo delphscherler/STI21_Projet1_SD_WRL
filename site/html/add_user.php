@@ -48,7 +48,7 @@ generateCSRFToken();
             <input id="role_administrator" type="radio" id="role_1" name="role" value="1" required="required">
             <label for="role_administrator">Administrator</label><br>
         </div>
-        <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+        <input type="hidden" name="csrfmiddlewaretoken" value="<?= $_SESSION['csrfmiddlewaretoken'] ?>">
         <button name="add" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Add</button>
     </form>
 </div>

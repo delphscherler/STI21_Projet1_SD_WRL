@@ -25,7 +25,7 @@ generateCSRFToken();
                 <label for="password">Password</label>
                 <input id="password" type="password" name="password" class="form-control" required="required"/>
             </div>
-            <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+            <input type="hidden" name="csrfmiddlewaretoken" value="<?= $_SESSION['csrfmiddlewaretoken'] ?>">
             <button name="login" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Login</button>
          </form>
     </div>

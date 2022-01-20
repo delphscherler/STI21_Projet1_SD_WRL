@@ -5,7 +5,7 @@ require_once __DIR__.'/../authorization.php';
 
 if (isset($_POST['update'])) {
     // Check CSRF Token
-    checkCSRFToken($_POST['token']);
+    checkCSRFToken($_POST['csrfmiddlewaretoken']);
 
     // Make sure the current user has the correct permission
     if (!STIAuthorization::access(STIAuthorization::ADMIN)) {
@@ -22,7 +22,7 @@ if (isset($_POST['update'])) {
         $user->role = $newRole;
         $user->save();
         // delete CSRF token
-        unset($_SESSION['token']);
+        unset($_SESSION['csrfmiddlewaretoken']);
 
         addFlashMessage('success', 'Role successfully changed!');
     }

@@ -44,7 +44,7 @@ generateCSRFToken();
             <input type="radio" id="role_1" name="new_role" value="1" required <?= (int)$user->role === 1 ? 'checked' : '' ?>>
             <label for="css">Administrator</label><br>
         </div>
-        <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+        <input type="hidden" name="csrfmiddlewaretoken" value="<?= $_SESSION['csrfmiddlewaretoken'] ?>">
         <button name="update" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Update role</button>
     </form>
 </div>

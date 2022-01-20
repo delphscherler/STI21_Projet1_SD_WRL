@@ -98,5 +98,5 @@ Cette page permet de modifier la validité d'un utilisateur.
 
 <img src="images/modify_val.png" alt="modify_val" width="350" />
 
-(À savoir qu'un comportement bizarre a parfois été observé sur cette page qui nous redirigeais sans raison sur l'Inbox.)
+(À savoir qu'un comportement bizarre a parfois été observé sur cette page qui nous redirigeait sans raison sur l'Inbox.)
 

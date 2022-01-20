@@ -13,11 +13,11 @@ function redirect($target, $code = 301) {
 }
 
 function generateCSRFToken(){
-    $_SESSION['token'] = md5(uniqid());
+    $_SESSION['csrfmiddlewaretoken'] = md5(uniqid());
 }
 
 function checkCSRFToken($token){
-        if (!$token || $token !== $_SESSION['token']) {
+        if (!$token || $token !== $_SESSION['csrfmiddlewaretoken']) {
             header($_SERVER['SERVER_PROTOCOL'] . ' 403 Forbidden');
             exit;
         }

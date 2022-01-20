@@ -52,7 +52,7 @@ generateCSRFToken();
             <textarea id="message" name="message" rows="5" cols="40"  class="form-control"></textarea>
         </div>
         <div class="form-group">
-            <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+            <input type="hidden" name="csrfmiddlewaretoken" value="<?= $_SESSION['csrfmiddlewaretoken'] ?>">
             <button name="send" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Send</button>
         </div>
     </form>

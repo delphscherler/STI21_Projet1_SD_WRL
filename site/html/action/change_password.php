@@ -7,7 +7,7 @@ require_once __DIR__.'/../authorization.php';
 if (isset($_POST['update'])) {
 
     // Check CSRF Token
-    checkCSRFToken($_POST['token']);
+    checkCSRFToken($_POST['csrfmiddlewaretoken']);
 
     $authUser = User::getById($_SESSION['uid']);
 
@@ -34,7 +34,7 @@ if (isset($_POST['update'])) {
             $user->save();
 
             // delete CSRF token
-            unset($_SESSION['token']);
+            unset($_SESSION['csrfmiddlewaretoken']);
 
             addFlashMessage('success', 'Password successfully updated!');
         }

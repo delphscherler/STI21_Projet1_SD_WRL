@@ -32,7 +32,7 @@ generateCSRFToken();
         <div class="form-group">
             <input type="hidden" name="user_id" value="<?= $user->id ?>">
         </div>
-        <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+        <input type="hidden" name="csrfmiddlewaretoken" value="<?= $_SESSION['csrfmiddlewaretoken'] ?>">
         <button name="delete" class="btn btn-danger"><span class="glyphicon glyphicon-log-in"></span>Delete</button>
         <button name="cancel" class="btn btn-info"><span class="glyphicon glyphicon-log-in"></span>Cancel</button>
     </form>

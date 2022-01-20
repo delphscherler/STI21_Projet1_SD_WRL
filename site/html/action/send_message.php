@@ -7,7 +7,7 @@ require_once __DIR__.'/../model/entities/user.php';
 
 if (isset($_POST['send'])) {
     // Check CSRF Token
-    checkCSRFToken($_POST['token']);
+    checkCSRFToken($_POST['csrfmiddlewaretoken']);
 
     if (!STIAuthorization::access()) {
         addFlashMessage('info', 'You need to login!');
@@ -33,6 +33,6 @@ if (isset($_POST['send'])) {
     $message->date = date('Y-m-d');
     $message->save();
     // delete CSRF token
-    unset($_SESSION['token']);
+    unset($_SESSION['csrfmiddlewaretoken']);
     addFlashMessage('success', "Message was successfully sent to {$receiver->username}");
 }

@@ -6,7 +6,7 @@ require_once __DIR__.'/../helper.php';
 if (isset($_POST['login'])) {
 
     // Check CSRF Token
-    checkCSRFToken($_POST['token']);
+    checkCSRFToken($_POST['csrfmiddlewaretoken']);
 
     $uname  = $_POST['username'];
     $passwd = $_POST['password'];
@@ -17,7 +17,7 @@ if (isset($_POST['login'])) {
         // create session
         $_SESSION["uid"] = $user->id;
         // delete CSRF token
-        unset($_SESSION['token']);
+        unset($_SESSION['csrfmiddlewaretoken']);
         // return to inbox
         redirect('inbox.php');
     } else {

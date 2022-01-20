@@ -12,7 +12,7 @@ if (isset($_POST['cancel'])) {
 if (isset($_POST['delete'])) {
 
     // Check CSRF Token
-    checkCSRFToken($_POST['token']);
+    checkCSRFToken($_POST['csrfmiddlewaretoken']);
 
     // Make sure the current user has the correct permission
     if (!STIAuthorization::access(STIAuthorization::ADMIN)) {
@@ -24,7 +24,7 @@ if (isset($_POST['delete'])) {
     $user->delete();
 
     // delete CSRF token
-    unset($_SESSION['token']);
+    unset($_SESSION['csrfmiddlewaretoken']);
 
     addFlashMessage('success', 'User successfully deleted!');
     redirect('administration.php');
