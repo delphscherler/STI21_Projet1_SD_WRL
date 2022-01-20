@@ -3,6 +3,13 @@ session_start();
 
 require_once __DIR__.'/authorization.php';
 require_once __DIR__.'/helper.php';
+
+// make sure an id was given
+if (!isset($_GET['id'])) {
+    addFlashMessage('warning', 'Something went wrong');
+    redirect('administration.php');
+}
+
 // Make sure the current user has the correct permission
 if (!STIAuthorization::access(STIAuthorization::ADMIN)) {
     addFlashMessage('info', 'You don\'t have the permissions to access this page');
@@ -12,6 +19,12 @@ if (!STIAuthorization::access(STIAuthorization::ADMIN)) {
 require_once __DIR__.'/model/entities/user.php';
 
 $user = User::getById($_GET['id']);
+
+// make sure that a user with the given id actually exists
+if (!$user) {
+    addFlashMessage('warning', 'Something went wrong');
+    redirect('administration.php');
+}
 
 require_once __DIR__.'/action/delete_user.php';
 require_once __DIR__.'/includes/header.php';

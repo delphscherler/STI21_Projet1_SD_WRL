@@ -36,7 +36,7 @@ require_once __DIR__.'/includes/header.php';
         <tbody>
         <?php foreach ($users as $id => $user): ?>
             <tr>
-                <td><?= $user->username ?></td>
+                <td><?= htmlentities($user->username) ?></td>
                 <td><?= $user->validity ?></td>
                 <td><?= $user->role ?></td>
                 <td>

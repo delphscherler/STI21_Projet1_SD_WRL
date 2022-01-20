@@ -5,7 +5,7 @@ require_once __DIR__.'/authorization.php';
 require_once __DIR__.'/helper.php';
 
 // Make sure the current user has the correct permission
-if ($_GET['id'] && !STIAuthorization::access(STIAuthorization::ADMIN)) {
+if ($_GET['id'] !== $_SESSION['uid'] && !STIAuthorization::access(STIAuthorization::ADMIN)) {
     addFlashMessage('info', 'You don\'t have the permissions to access this page');
     redirect('inbox.php');
 }
