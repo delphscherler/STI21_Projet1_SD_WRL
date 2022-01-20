@@ -28,8 +28,8 @@ if (isset($_POST['send'])) {
     $message->sender = $_SESSION['uid'];
     $message->receiver = $receiver->id;
     // sanitize user input to avoid XSS attack
-    $message->subject = htmlspecialchars($_POST['subject']);
-    $message->message = htmlspecialchars($_POST['message']);
+    $message->subject = htmlentities($_POST['subject']);
+    $message->message = htmlentities($_POST['message']);
     $message->date = date('Y-m-d');
     $message->save();
     // delete CSRF token

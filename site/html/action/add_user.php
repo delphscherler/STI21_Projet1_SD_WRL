@@ -31,7 +31,7 @@ if(isset($_POST['add'])) {
     }
 
     $user = new User();
-    $user->username = $uname;
+    $user->username = htmlentities($uname);
     $user->password = password_hash($passwd, PASSWORD_DEFAULT);
     $user->validity = $validity;
     $user->role = $role;
