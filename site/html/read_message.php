@@ -1,64 +1,61 @@
 <?php
-	session_start();
-	
-	//Control if user is logged in
-	if(!isset($_SESSION['username'])){
-	   header("Location:index.php");
-	}
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+session_start();
+
+require_once __DIR__.'/helper.php';
+require_once __DIR__.'/authorization.php';
+require_once __DIR__.'/model/entities/user.php';
+require_once __DIR__.'/model/entities/message.php';
+
+if (!STIAuthorization::access()) {
+    addFlashMessage('info', 'You need to login!');
+    redirect('inbox.php');
+}
+
+// TODO make sure $_GET['id'] was given
+
+// get the message we want to view
+$message = Message::getById($_GET['id']);
+
+// check that we are trying to view one of our messages
+if ($_SESSION['uid'] !== $message->receiver) {
+    addFlashMessage('info', 'You can only view your messages!');
+    redirect('inbox.php');
+}
+
+require_once __DIR__.'/includes/header.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
-		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css"/>
-    </head>
-    <body>
-    <div class="col-md-6 well">
-        <h1 class="text-primary">Message</h1>		
-        <hr style="border-top:1px dotted #ccc;"/>
-        <button class="btn btn-dark" onclick="document.location.href='inbox.php'">Back</button>
-		<hr style="border-top:1px dotted #ccc;"/>
-		<!-- Actions buttons -->
-		<form method="POST" action="msg_actions.php">				 		
-				<button name="answer" class="btn btn-info">Answer</button>
-				<button name="delete" class="btn btn-danger">Delete</button>			
-			
-		
-		<!-- Display message -->
-		<?php 			
-			require('connexion.php');			
-			$sql = "SELECT * FROM messages WHERE sender='".$_GET['sender']."' AND date='".$_GET['date']."' AND subject='".$_GET['subject']."'";
-			
-			foreach  ($file_db->query($sql) as $row) {					
-					$sender = $row['sender'];
-					$date = $row['date'];
-					$subject = $row['subject'];
-					$message = $row['message'];
-			}
-			
-			echo "<table class=\"table table-hover\">";
-			echo "<tr>";
-			echo "<td>Sender : </td><td>$sender</td>";
-			echo "<input type=\"hidden\" name=\"sender\" value=\"$sender\"/>"; 
-			echo "</tr>";
-			echo "<tr>";
-			echo "<td>Date : </td><td>$date</td>";
-			echo "<input type=\"hidden\" name=\"date\" value=\"$date\"/>";
-			echo "</tr>";
-			echo "<tr>";
-			echo "<td>Subject : </td><td>$subject</td>";
-			echo "<input type=\"hidden\" name=\"subject\" value=\"$subject\"/>";
-			echo "</tr>";
-			echo "<tr>";
-			echo "<td>Message : </td><td>$message</td>";			
-			echo "</tr>";
-			echo "</table>";
-			
-			
-			// Close file db connection
-			$file_db = null;   
-		?>		
-		</form>	
-    </body>		
-</html>
+<div class="col-md-6 well">
+    <h1 class="text-primary">Message</h1>
+    <hr style="border-top:1px dotted #ccc;"/>
+    <button class="btn btn-dark" onclick="document.location.href='inbox.php'">Back</button>
+    <hr style="border-top:1px dotted #ccc;"/>
+    <!-- Actions buttons -->
+
+    <a href="send_message.php?receiver=<?= $message->sender ?>" class="btn btn-info">Answer</a>
+    <a href="delete_message.php?id=<?= $message->id ?>" class="btn btn-danger">Delete</a>
+
+    <table class="table table-hover">
+        <tr>
+            <th>Sender:</th>
+            <td><?= User::getById($message->sender)->username ?></td>
+        </tr>
+        <tr>
+            <th>Date:</th>
+            <td><?= $message->date ?></td>
+        </tr>
+        <tr>
+            <th>Subject:</th>
+            <td><?= $message->subject ?></td>
+        </tr>
+        <tr>
+            <th>Message:</th>
+            <td><?= $message->message ?></td>
+        </tr>
+    </table>
+</div>
+<?php
+require_once __DIR__.'/includes/footer.php';
