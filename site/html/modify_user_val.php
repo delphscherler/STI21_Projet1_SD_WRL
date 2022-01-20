@@ -31,7 +31,7 @@ generateCSRFToken();
     <form method="post">
         <div class="form-group">
             <label for="username">Username :</label>
-            <input id="username" name="username" type="text" class="form-control" value="<?= $user->username ?>" disabled>
+            <input id="username" name="username" type="text" class="form-control" value="<?= htmlentities($user->username) ?>" disabled>
             <input type="hidden" name="user_id" value="<?= $user->id ?>">
         </div>
         <div class="form-group">

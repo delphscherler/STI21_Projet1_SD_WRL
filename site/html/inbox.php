@@ -63,9 +63,9 @@ require_once __DIR__.'/includes/header.php';
     <tbody>
     <?php foreach (Message::getAll(['receiver' => $user->id]) as $message): ?>
         <tr>
-            <td><?= User::getById($message->sender)->username ?></td>
+            <td><?= htmlentities(User::getById($message->sender)->username) ?></td>
             <td><?= $message->date ?></td>
-            <td><?= $message->subject ?></td>
+            <td><?= htmlentities($message->subject) ?></td>
             <td>
                 <a href="read_message.php?id=<?= $message->id ?>" class="btn btn-primary">Read</a>
                 <a href="send_message.php?receiver=<?= $message->sender ?>" class="btn btn-info">Answer</a>

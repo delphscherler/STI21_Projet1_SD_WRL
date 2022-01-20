@@ -27,7 +27,7 @@ generateCSRFToken();
 <button class="btn btn-dark" onclick="document.location.href='administration.php'">Back</button>
 <hr style="border-top:1px dotted #ccc;"/>
 <div class="col-md-6">
-    <h3>Are you sure you want to delete <?= $user->username ?>?</h3>
+    <h3>Are you sure you want to delete <?= htmlentities($user->username) ?>?</h3>
     <form method="post">
         <div class="form-group">
             <input type="hidden" name="user_id" value="<?= $user->id ?>">

@@ -37,7 +37,7 @@ generateCSRFToken();
                         selected
                     <?php endif; ?>
                 >
-                    <?= $user->username ?>
+                    <?= htmlentities($user->username) ?>
                 </option>
                 <?php endif; ?>
             <?php endforeach; ?>

@@ -1,7 +1,4 @@
 <?php
-ini_set('display_startup_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(-1);
 session_start();
 
 require_once __DIR__.'/helper.php';
@@ -41,7 +38,7 @@ require_once __DIR__.'/includes/header.php';
     <table class="table table-hover">
         <tr>
             <th>Sender:</th>
-            <td><?= User::getById($message->sender)->username ?></td>
+            <td><?= htmlentities(User::getById($message->sender)->username) ?></td>
         </tr>
         <tr>
             <th>Date:</th>
@@ -49,11 +46,11 @@ require_once __DIR__.'/includes/header.php';
         </tr>
         <tr>
             <th>Subject:</th>
-            <td><?= $message->subject ?></td>
+            <td><?= htmlentities($message->subject) ?></td>
         </tr>
         <tr>
             <th>Message:</th>
-            <td><?= $message->message ?></td>
+            <td><?= htmlentities($message->message) ?></td>
         </tr>
     </table>
 </div>
