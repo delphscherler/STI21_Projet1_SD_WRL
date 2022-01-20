@@ -1,12 +1,17 @@
-# STI - Projet 1
+# STI - Projet 2
+
+> Auteurs : Delphine Scherler et Doran Kayoumi
+>
+> Date : 20.01.2022
 
 Pour exécuter notre projet :
 
 1. Cloner le dossier localement sur votre ordinateur.
 2. Démarrer Docker.
 3. Ouvrir une fenêtre Git Bash à la racine du projet.
-4. Lancer le script suivant dans l’invit Bash : ./launch.sh
+4. Lancer le script suivant dans l’invit Bash : ./docker/install.sh (à faire que la première fois)
 5. Accéder à http://localhost:9396/ depuis un navigateur.
+6. À tout moment vous pouvez arrêter les containers avec `docker-compose stop` et les redémarrer avec `docker-compose up -d`
 
 ## Login
 
@@ -27,9 +32,15 @@ Vous pouvez utiliser l'un d'eux pour vous connecter.
 
 ## Inbox
 
-Dès que vous êtes connecté vous allez arriver sur la page principale de la messagerie :
+Dès que vous êtes connecté vous allez arriver sur la page principale de la messagerie.
 
-<img src="images/inbox.PNG" alt="inbox" />
+Vue par un administrateur :
+
+<img src="images/inbox.PNG" alt="inbox" style="zoom:80%;" />
+
+Vue par un utilisateur :
+
+<img src="images/inbox_2.PNG" alt="inbox_2" style="zoom:80%;" />
 
 Pour la démo, la base de données fournie dans GitHub contient quelques mails.
 
@@ -37,55 +48,55 @@ Depuis cette page vous pouvez :
 
 - Lire, répondre ou supprimer des messages.
 - Ecrire un nouveau message.
-- Accéder à la page d'administration.
+- Changer votre mot de passe.
+- Accéder à la page d'administration, si vous êtes administrateur.
 - Vous déconnecter.
 
-## New message
+## New message / Answer
 
 Voici la page pour écrire un nouveau message :
 
-<img src="images/new_msg.PNG" alt="new_msg" width="250" />
+<img src="images/new_msg.PNG" alt="new_msg" width="350" />
 
 ## Read
 
 Cette page permet de lire le corps du message. Mais également de répondre ou de supprimer celui-ci.
 
-<img src="images/read.PNG" alt="read" width="250" />
+<img src="images/read.PNG" alt="read" width="350" />
+
+## Change my password
+
+Cette page permet de changer son mot de passe.
+
+<img src="images/password.PNG" alt="password" width="350" />
 
 ## Administration
 
-Cette page permet pour un utilisateur de :
+Cette page est réservée à l'administrateur, elle permet de :
 
-- modifier son mot de passe
-
-Pour un administrateur de (comme ci-dessous) :
-
-- modifier son mot de passe
 - ajouter de nouveaux utilisateurs
-- modifier un utilisateur
+- modifier un utilisateur (mot de passe, rôle, validité)
 - supprimer un utilisateur
 
-<img src="images/admin.PNG" alt="admin" width="250" />
+<img src="images/admin.PNG" alt="admin" width="350" />
 
 ## Add user
 
 Cette page permet d'ajouter un utilisateur à la base de données.
 
-<img src="images/add_user.PNG" alt="add_user" width="250" />
+<img src="images/add_user.PNG" alt="add_user" width="350" />
 
-## Modify user
+## Modify role of user
 
-Cette page permet de :
+Cette page permet de modifier le rôle d'un utilisateur.
 
-- Afficher les détails d'un utilisateur
-- Modifier le mot de passe d'un utilisateur
-- Modifier la validité d'un utilisateur
-- Modifier le rôle d'un utilisateur
+<img src="images/modify_role.PNG" alt="modify_role" width="350" />
 
-<img src="images/modify_user.PNG" alt="modify_user" width="500" />
+## Modify validity of user
 
-## Delete user
+Cette page permet de modifier la validité d'un utilisateur.
 
-Cette page permet de choisir un utilisateur et de le supprimer.
+<img src="images/modify_val.PNG" alt="modify_val" width="350" />
 
-<img src="images/delete_user.PNG" alt="delete_user" width="250" />
+(À savoir qu'un comportement bizarre a parfois été observé sur cette page qui nous redirigeais sans raison sur l'Inbox.)
+
