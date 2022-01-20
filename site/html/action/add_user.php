@@ -5,6 +5,10 @@ require_once __DIR__.'/../validation.php';
 require_once __DIR__.'/../authorization.php';
 
 if(isset($_POST['add'])) {
+
+    // Check CSRF Token
+    checkCSRFToken($_POST['token']);
+
     // Make sure the current user has the correct permission
     if (!STIAuthorization::access(STIAuthorization::ADMIN)) {
         addFlashMessage('info', 'You don\'t have the permissions to access this page');
@@ -33,5 +37,9 @@ if(isset($_POST['add'])) {
     $user->role = $role;
 
     $user->save();
+
+    // delete CSRF token
+    unset($_SESSION['token']);
+
     addFlashMessage('success', 'User was successfully created!');
 }

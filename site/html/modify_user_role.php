@@ -18,6 +18,9 @@ $user = User::getById($_GET['id']);
 
 require_once __DIR__.'/action/change_role.php';
 require_once __DIR__.'/includes/header.php';
+
+// Generate CSRF Token
+generateCSRFToken();
 ?>
 
 <!-- Modifier le role d'un utilisateur!-->
@@ -41,6 +44,7 @@ require_once __DIR__.'/includes/header.php';
             <input type="radio" id="role_1" name="new_role" value="1" required <?= (int)$user->role === 1 ? 'checked' : '' ?>>
             <label for="css">Administrator</label><br>
         </div>
+        <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
         <button name="update" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Update role</button>
     </form>
 </div>

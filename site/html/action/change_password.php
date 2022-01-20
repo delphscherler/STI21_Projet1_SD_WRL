@@ -5,6 +5,10 @@ require_once __DIR__.'/../validation.php';
 require_once __DIR__.'/../authorization.php';
 
 if (isset($_POST['update'])) {
+
+    // Check CSRF Token
+    checkCSRFToken($_POST['token']);
+
     $authUser = User::getById($_SESSION['uid']);
 
     // Make sure the current user has the correct permission
@@ -28,6 +32,9 @@ if (isset($_POST['update'])) {
             // hash the password and update the user with the new hash
             $user->password = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
             $user->save();
+
+            // delete CSRF token
+            unset($_SESSION['token']);
 
             addFlashMessage('success', 'Password successfully updated!');
         }

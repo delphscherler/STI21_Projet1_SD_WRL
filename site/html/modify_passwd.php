@@ -3,6 +3,7 @@ session_start();
 
 require_once __DIR__.'/authorization.php';
 require_once __DIR__.'/helper.php';
+
 // Make sure the current user has the correct permission
 if ($_GET['id'] && !STIAuthorization::access(STIAuthorization::ADMIN)) {
     addFlashMessage('info', 'You don\'t have the permissions to access this page');
@@ -11,6 +12,9 @@ if ($_GET['id'] && !STIAuthorization::access(STIAuthorization::ADMIN)) {
 
 require_once __DIR__.'/action/change_password.php';
 require_once __DIR__.'/includes/header.php';
+
+// Generate CSRF Token
+generateCSRFToken();
 ?>
 <div class="col-md-6 well">
     <h1 class="text-primary">Change password</h1>
@@ -23,6 +27,7 @@ require_once __DIR__.'/includes/header.php';
                 <label for="password">New Password</label>
                 <input id="password" type="password" name="new_password" class="form-control" required="required"/>
             </div>
+            <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
             <input type="hidden" name="user_id" value="<?= isset($_GET['id']) ? $_GET['id'] : $_SESSION['uid'] ?>">
             <button name="update" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Update</button>
         </form>

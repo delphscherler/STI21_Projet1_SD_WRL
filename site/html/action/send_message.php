@@ -6,6 +6,9 @@ require_once __DIR__.'/../model/entities/message.php';
 require_once __DIR__.'/../model/entities/user.php';
 
 if (isset($_POST['send'])) {
+    // Check CSRF Token
+    checkCSRFToken($_POST['token']);
+
     if (!STIAuthorization::access()) {
         addFlashMessage('info', 'You need to login!');
         redirect('inbox.php');
@@ -29,6 +32,7 @@ if (isset($_POST['send'])) {
     $message->message = htmlspecialchars($_POST['message']);
     $message->date = date('Y-m-d');
     $message->save();
-
+    // delete CSRF token
+    unset($_SESSION['token']);
     addFlashMessage('success', "Message was successfully sent to {$receiver->username}");
 }

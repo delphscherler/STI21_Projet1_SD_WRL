@@ -9,10 +9,11 @@ if (!STIAuthorization::access()) {
 
 require_once __DIR__.'/model/entities/user.php';
 require_once __DIR__.'/model/entities/message.php';
-
 require_once __DIR__.'/action/send_message.php';
-
 require_once __DIR__.'/includes/header.php';
+
+// Generate CSRF Token
+generateCSRFToken();
 ?>
 
 <div class="col-md-6 well">
@@ -51,6 +52,7 @@ require_once __DIR__.'/includes/header.php';
             <textarea id="message" name="message" rows="5" cols="40"  class="form-control"></textarea>
         </div>
         <div class="form-group">
+            <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
             <button name="send" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Send</button>
         </div>
     </form>

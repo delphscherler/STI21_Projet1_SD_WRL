@@ -1,8 +1,8 @@
 <?php
-ini_set('display_startup_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(-1);
-session_start();
+// ini_set('display_startup_errors', 1);
+// ini_set('display_errors', 1);
+// error_reporting(-1);
+// session_start();
 
 require_once __DIR__.'/authorization.php';
 require_once __DIR__.'/helper.php';
@@ -18,12 +18,15 @@ $user = User::getById($_GET['id']);
 
 require_once __DIR__.'/action/change_validity.php';
 require_once __DIR__.'/includes/header.php';
+
+// Generate CSRF Token
+generateCSRFToken();
 ?>
 <h2 class ="text-tertiary">Modify validity of user</h2>
 <hr style="border-top:1px dotted #ccc;"/>
 
 <button class="btn btn-info" onclick="document.location.href='inbox.php'">Home</button>
-<button class="btn btn-dark" onclick="document.location.href='modify_user.php'">Back</button>
+<button class="btn btn-dark" onclick="document.location.href='administration.php'">Back</button>
 
 <hr style="border-top:1px dotted #ccc;"/>
 
@@ -41,6 +44,7 @@ require_once __DIR__.'/includes/header.php';
             <input id="val_active" type="radio" id="val_1" name="new_validity" value="1" required <?= (int)$user->validity === 1 ? 'checked' : '' ?>>
             <label for="val_active">Active</label><br>
         </div>
+        <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
         <button name="update" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Update validity</button>
     </form>
 </div>

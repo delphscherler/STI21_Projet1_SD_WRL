@@ -4,6 +4,9 @@ require_once __DIR__.'/../helper.php';
 require_once __DIR__.'/../authorization.php';
 
 if (isset($_POST['update'])) {
+    // Check CSRF Token
+    checkCSRFToken($_POST['token']);
+
     // Make sure the current user has the correct permission
     if (!STIAuthorization::access(STIAuthorization::ADMIN)) {
         addFlashMessage('info', 'You don\'t have the permissions to access this page');
@@ -18,6 +21,8 @@ if (isset($_POST['update'])) {
     } else {
         $user->validity = $newValidity;
         $user->save();
+        // delete CSRF token
+        unset($_SESSION['token']);
 
         addFlashMessage('success', 'Validity successfully changed!');
     }

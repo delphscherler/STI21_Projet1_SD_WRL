@@ -18,7 +18,7 @@ function generateCSRFToken(){
 
 function checkCSRFToken($token){
         if (!$token || $token !== $_SESSION['token']) {
-            header($_SERVER['SERVER_PROTOCOL'] . ' 405 Method Not Allowed');
+            header($_SERVER['SERVER_PROTOCOL'] . ' 403 Forbidden');
             exit;
         }
 }

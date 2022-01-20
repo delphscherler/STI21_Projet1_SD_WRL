@@ -15,6 +15,9 @@ $user = User::getById($_GET['id']);
 
 require_once __DIR__.'/action/delete_user.php';
 require_once __DIR__.'/includes/header.php';
+
+// Generate CSRF Token
+generateCSRFToken();
 ?>
 
 <!-- Supprimer un utilisateur!-->
@@ -29,6 +32,7 @@ require_once __DIR__.'/includes/header.php';
         <div class="form-group">
             <input type="hidden" name="user_id" value="<?= $user->id ?>">
         </div>
+        <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
         <button name="delete" class="btn btn-danger"><span class="glyphicon glyphicon-log-in"></span>Delete</button>
         <button name="cancel" class="btn btn-info"><span class="glyphicon glyphicon-log-in"></span>Cancel</button>
     </form>

@@ -11,6 +11,9 @@ if (!STIAuthorization::access(STIAuthorization::ADMIN)) {
 
 require_once __DIR__.'/action/add_user.php';
 require_once __DIR__.'/includes/header.php';
+
+// Generate CSRF Token
+generateCSRFToken();
 ?>
 <h2 class="text-tertiary">Add a new user</h2>
 
@@ -45,6 +48,7 @@ require_once __DIR__.'/includes/header.php';
             <input id="role_administrator" type="radio" id="role_1" name="role" value="1" required="required">
             <label for="role_administrator">Administrator</label><br>
         </div>
+        <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
         <button name="add" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Add</button>
     </form>
 </div>
